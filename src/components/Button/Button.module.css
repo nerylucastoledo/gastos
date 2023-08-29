@@ -1,0 +1,24 @@
+.button {
+  height: 48px;
+  border: none;
+  border-radius: 32px;
+  font-size: 24px;
+  text-align: center;
+  text-transform: capitalize;
+  width: 145px;
+  color: var(--color-7);
+  display: block;
+}
+
+.principal {
+  width: 270px;
+  background-color: var(--color-3);
+}
+
+.accepted {
+  background-color: var(--color-accepted);
+}
+
+.refused {
+  background-color: var(--color-error);
+}

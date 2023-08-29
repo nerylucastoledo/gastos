@@ -4,3 +4,15 @@
   list-style: none;
   box-sizing: border-box;
 }
+
+:root {
+  --color-1: #0c1c24;
+  --color-2: #2e4569;
+  --color-3: #004c51;
+  --color-4: #2d7269;
+  --color-5: #7e988d;
+  --color-6: #C7CACB;
+  --color-7: #fff;
+  --color-accepted: #34AF31;
+  --color-error: #FF0000;
+}
