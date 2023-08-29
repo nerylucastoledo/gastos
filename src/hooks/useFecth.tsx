@@ -19,7 +19,7 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
       try {
         const response = await fetch(url, {
           signal,
-          ...config
+          ...config,
         })
 
         if (!response.ok) {
