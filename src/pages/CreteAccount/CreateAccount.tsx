@@ -1,19 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 import Logo from '../../assets/img/logo.png'
 
-import { NavLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button/Button"
 import { Input } from "../../components/input/Input"
 import { Popup } from "../../components/Popup/Popup"
 
 export const CreateAccount = () => {
-  const [name, setName] = React.useState('')
-  const [lastname, setLastName] = React.useState('')
-  const [salary, setSalary] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [error, setError] = React.useState('')
-  const [errorFields, setErrorFields] = React.useState<string[]>([])
+  const navigate = useNavigate()
+
+  const [name, setName] = useState('')
+  const [lastname, setLastName] = useState('')
+  const [salary, setSalary] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [errorFields, setErrorFields] = useState<string[]>([])
 
   const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -31,7 +33,7 @@ export const CreateAccount = () => {
         body: JSON.stringify({
           name,
           lastname,
-          salary,
+          salary: Number(salary).toFixed(2),
           email,
           password
         }),
@@ -40,16 +42,15 @@ export const CreateAccount = () => {
         },
       })
       .then((res) => {
-        if (!res.ok && res.status === 500) {
-          throw new Error("email")
-        } else {
+        if (!res.ok) {
+          if (res.status === 500) throw new Error('email')
           setError('Ocorreu um erro interno, tente novamente!')
-          setTimeout(() => {
-            setError('')
-          }, 2000);
+          setTimeout(() => setError(''), 2000)
         }
+        
+        navigate('/login')
       })
-      .catch(() => setErrorFields(["email"]))
+      .catch(({ message }) => setErrorFields([message]))
     }
   }
 
@@ -58,93 +59,100 @@ export const CreateAccount = () => {
       {error.length ? <Popup>{error}</Popup> : null}
 
       <img className='logo-center' src={Logo} alt="Logo da empresa" />
-      <div className='background'>
         <form onSubmit={handleForm} className='form-inputs'>
           <h1>Criar conta</h1>
           
-          <div>
-            <div style={{ margin: '64px 0 32px' }}>
-              <Input
-                label="" 
-                type="text" 
-                id="name" 
-                placeholder="Nome" 
-                typeInput="border" 
-                value={name}
-                onChange={({currentTarget}) => setName(currentTarget.value)}
-                style={{ borderBottomColor: errorFields.includes('name') ? 'red' : 'unset'}}
-              />
-              {errorFields.includes('name') && <p className="error-input ">Preencha o nome</p>}
-            </div>
-
-            <div style={{ marginBottom: '32px' }}>
-              <Input
-                label="" 
-                type="text" 
-                id="lastname" 
-                placeholder="Sobrenome" 
-                typeInput="border" 
-                value={lastname}
-                onChange={({currentTarget}) => setLastName(currentTarget.value)}
-                style={{ borderBottomColor: errorFields.includes('lastname') ? 'red' : 'unset'}}
-              />
-              {errorFields.includes('lastname') && <p className="error-input ">Preencha o sobrenome</p>}
-            </div>
-
-            <div style={{ marginBottom: '32px' }}>
-              <Input
-                label="" 
-                type="number" 
-                id="salary" 
-                placeholder="Salário" 
-                typeInput="border" 
-                value={salary}
-                onChange={({currentTarget}) => setSalary(currentTarget.value)}
-                style={{ borderBottomColor: errorFields.includes('salary') ? 'red' : 'unset'}}
-              />
-              {errorFields.includes('salary') && <p className="error-input ">Preencha o salário</p>}
-            </div>
-
-            <div  style={{ marginBottom: '32px' }}>
-              <Input
-                label="" 
-                type="email" 
-                id="email" 
-                placeholder="Email" 
-                typeInput="border" 
-                value={email}
-                onChange={({currentTarget}) => setEmail(currentTarget.value)}
-                style={{ borderBottomColor: errorFields.includes('email') ? 'red' : 'unset'}}
-              />
-              {errorFields.includes('email') && <p className="error-input ">Email vazio ou já utilizado</p>}
-            </div>
-
-            <div>
-              <Input 
-                label="" 
-                type="password" 
-                id="password" 
-                placeholder="Senha"
-                typeInput="border" 
-                value={password}
-                onChange={({currentTarget}) => setPassword(currentTarget.value)}
-                style={{ borderBottomColor: errorFields.includes('password') ? 'red' : 'unset'}}
-              />
-              {errorFields.includes('password') && <p className="error-input ">Senha deve ter 8 caracteres</p>}
-            </div>
+        <div>
+          <div style={{ margin: '64px 0 32px' }}>
+            <Input
+              label="" 
+              type="text" 
+              id="name"
+              name="name" 
+              placeholder="Nome" 
+              typeInput="border" 
+              value={name}
+              onChange={({currentTarget}) => setName(currentTarget.value)}
+              style={{ borderBottomColor: errorFields.includes('name') ? 'red' : 'unset'}}
+            />
+            {errorFields.includes('name') && <p className="error-input ">Preencha o nome</p>}
           </div>
 
-          <Button typeBtn='principal' style={{ margin: '32px auto 0' }}>Entrar</Button>
-        </form>
+          <div style={{ marginBottom: '32px' }}>
+            <Input
+              label="" 
+              type="text" 
+              id="lastname" 
+              name="lastname"
+              placeholder="Sobrenome" 
+              typeInput="border" 
+              value={lastname}
+              onChange={({currentTarget}) => setLastName(currentTarget.value)}
+              style={{ borderBottomColor: errorFields.includes('lastname') ? 'red' : 'unset'}}
+            />
+            {errorFields.includes('lastname') && <p className="error-input ">Preencha o sobrenome</p>}
+          </div>
 
-        <div style={{ marginTop: '32px'}}>
-          <p className='paragraph-default'>Já possui conta?</p>
-          
-          <NavLink to={'/login'} style={{ textDecoration: 'none'}}>
-            <Button typeBtn='principal' style={{ margin: '16px auto 0' }}>Acessar</Button>
-          </NavLink>
+          <div style={{ marginBottom: '32px' }}>
+            <Input
+              label="" 
+              type="number" 
+              id="salary" 
+              name="salary"
+              placeholder="Salário" 
+              typeInput="border" 
+              value={salary}
+              onChange={({currentTarget}) => setSalary(currentTarget.value)}
+              style={{ borderBottomColor: errorFields.includes('salary') ? 'red' : 'unset'}}
+            />
+            {errorFields.includes('salary') && <p className="error-input ">Preencha o salário</p>}
+          </div>
+
+          <div  style={{ marginBottom: '32px' }}>
+            <Input
+              label="" 
+              type="email" 
+              id="email" 
+              name="email"
+              placeholder="Email" 
+              typeInput="border"
+              value={email}
+              onChange={({currentTarget}) => setEmail(currentTarget.value)}
+              style={{ borderBottomColor: errorFields.includes('email') ? 'red' : 'unset'}}
+            />
+            {errorFields.includes('email') && <p className="error-input ">Email vazio ou já utilizado</p>}
+          </div>
+
+          <div>
+            <Input 
+              label="" 
+              type="password" 
+              id="password" 
+              name="password"
+              placeholder="Senha"
+              typeInput="border" 
+              value={password}
+              autoComplete='on'
+              onChange={({currentTarget}) => setPassword(currentTarget.value)}
+              style={{ borderBottomColor: errorFields.includes('password') ? 'red' : 'unset'}}
+            />
+            {errorFields.includes('password') && <p className="error-input ">Senha deve ter 8 caracteres</p>}
+          </div>
         </div>
-      </div>
+
+        <Button typeBtn='principal' id="criar" style={{ margin: '32px auto 0' }}>Criar</Button>
+      </form>
+
+      <p className='paragraph-default' style={{ marginTop: '32px', marginBottom: '16px' }}>Já possui conta?</p>
+      
+      <Button 
+        onClick={() => navigate('/login')} 
+        typeBtn='principal' 
+        id="acessar" 
+        style={{ margin: '0 auto 0' }}
+      >
+        Acessar
+      </Button>
     </div>
   )
 }

@@ -1,5 +1,4 @@
-module.exports = {
-  // The root of your source code, typically /src
+export default {  // The root of your source code, typically /src
   // `<rootDir>` is a token Jest substitutes
   roots: ["<rootDir>/src"],
 
@@ -25,7 +24,4 @@ module.exports = {
 
   // Module file extensions for importing
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-  moduleNameMapper: {
-    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
-  }
 };

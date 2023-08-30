@@ -1,66 +1,107 @@
-import React from 'react'
+import React, { useState } from "react"
 import Logo from '../../assets/img/logo.png'
 
-import { Input } from '../../components/input/Input'
-import { NavLink } from 'react-router-dom'
-import { Button } from '../../components/Button/Button'
+import { useNavigate } from "react-router-dom"
+import { Button } from "../../components/Button/Button"
+import { Input } from "../../components/input/Input"
+import { Popup } from "../../components/Popup/Popup"
 
 export const Login = () => {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [errorFields, setErrorFields] = useState<string[]>([])
 
   const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('email', email)
-    console.log('password', password)
+    setErrorFields([])
+
+    if (!email.length) setErrorFields((previous) => [...previous, 'email'])
+    if (password.length < 8) setErrorFields((previous) => [...previous, 'password'])
+    if (email.length && password.length >= 8) {
+
+    fetch('http://localhost:8080/user/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: {
+      'Content-Type': 'application/json',
+      },
+    })
+    .then(async (res) => {
+      const json = await res.json().then(json => json)
+      if (json.username) {
+        window.localStorage.setItem('username', json.username)
+        return navigate('/')
+      }
+      if (json.status === 401) throw new Error(json.message)
+      if (!res.ok) throw new Error("Ocorreu um erro interno!")
+    })
+    .catch(({ message }) => {
+      setError(message)
+      setTimeout(() => setError(''), 2000)
+      })
+    }
   }
 
   return (
     <div className='login-container'>
+      {error.length ? <Popup>{error}</Popup> : null}
+
       <img className='logo-center' src={Logo} alt="Logo da empresa" />
       <p className='paragraph-default'>Preencha as informções para acessar</p>
 
-      <div className='background'>
-        <form onSubmit={handleForm} className='form-inputs'>
-          <h1>Faça o login</h1>
-          
-          <div>
+      <form onSubmit={handleForm} className='form-inputs'>
+        <h1>Faça o login</h1>
+
+        <div>
+          <div style={{ margin: '64px 0 32px' }}>
             <Input
               label="" 
               type="email" 
               id="email" 
-              placeholder="Digite seu email" 
-              typeInput="border" 
-              style={{ margin: '64px 0 32px' }}
+              name="email"
+              placeholder="Email" 
+              typeInput="border"
               value={email}
               onChange={({currentTarget}) => setEmail(currentTarget.value)}
+              style={{ borderBottomColor: errorFields.includes('email') ? 'red' : 'unset'}}
             />
-            
+            {errorFields.includes('email') && <p className="error-input ">Email não pode ser vazio</p>}
+          </div>
+
+          <div>
             <Input 
               label="" 
               type="password" 
               id="password" 
-              placeholder="Digite sua senha"
+              name="password"
+              placeholder="Senha"
               typeInput="border" 
               value={password}
+              autoComplete='on'
               onChange={({currentTarget}) => setPassword(currentTarget.value)}
+              style={{ borderBottomColor: errorFields.includes('password') ? 'red' : 'unset'}}
             />
+            {errorFields.includes('password') && <p className="error-input ">Senha deve ter 8 caracteres</p>}
           </div>
-
-          <div>
-            <NavLink  to={"/reset-password"}>Não lembra a senha?</NavLink>
-          </div>
-
-          <Button typeBtn='principal' style={{ margin: '32px auto 0' }}>Entrar</Button>
-        </form>
-
-        <div style={{ marginTop: '32px'}}>
-          <p className='paragraph-default'>Não tem uma conta?</p>
-          
-          <NavLink to={'/create-account'} style={{ textDecoration: 'none'}}>
-            <Button typeBtn='principal' style={{ margin: '16px auto 0' }}>Criar conta</Button>
-          </NavLink>
         </div>
+
+        <Button typeBtn='principal' id="login" style={{ margin: '32px auto 0' }}>Entrar</Button>
+      </form>
+
+      <p className='paragraph-default' style={{ marginTop: '32px', marginBottom: '16px' }}>Não tem uma conta?</p>
+
+      <div>
+        <Button 
+          onClick={() => navigate('/create-account')} 
+          typeBtn='principal' 
+          id="create" 
+          style={{ margin: '0 auto 0' }}
+        >
+          Criar conta
+        </Button>
       </div>
     </div>
   )
