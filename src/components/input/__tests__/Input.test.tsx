@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react'
 import { Input } from '../Input'
 
 describe('Input component', () => {
-  test('should render with the same label, id and name', () => {
+  it('should render with the same label, id and name', () => {
     const { getByLabelText, getByRole } = render(<Input label='Name' typeInput='normal' />)
 
     expect(getByLabelText('Name')).toBeInTheDocument()
@@ -11,19 +11,19 @@ describe('Input component', () => {
     expect(getByRole("textbox")).toHaveAttribute('name', 'name')
   })
 
-  test('should render button with class "normal"', () => {
+  it('should render button with class "normal"', () => {
     const { getByRole } = render(<Input label='Name' typeInput='normal' />)
 
     expect(getByRole("textbox")).toHaveClass('normal')
   })
 
-  test('should render button with class "border"', () => {
+  it('should render button with class "border"', () => {
     const { getByRole } = render(<Input label='Name' typeInput='border' />)
 
     expect(getByRole("textbox")).toHaveClass('border')
   })
 
-  test('should change the value when typing', () => {
+  it('should change the value when typing', () => {
     const { getByRole } = render(<Input label='Name' typeInput='normal' />)
     const inputElement = getByRole("textbox") as HTMLInputElement
 

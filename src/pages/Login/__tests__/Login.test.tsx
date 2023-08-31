@@ -12,8 +12,8 @@ describe('Login page', () => {
   it('should render with w inputs on screen', () => {
     render(<Login />)
 
-    const emailInput = screen.getByPlaceholderText('Email')
-    const passwordInput = screen.getByPlaceholderText('Senha')
+    const emailInput = screen.getByPlaceholderText('Digite seu email')
+    const passwordInput = screen.getByPlaceholderText('Digite a senha')
 
     expect(emailInput).toBeInTheDocument()
     expect(passwordInput).toBeInTheDocument()
@@ -38,8 +38,8 @@ describe('Login page', () => {
   it('should change input values ​​when typing', () => {
     render(<Login />)
 
-    const emailInputElement = screen.getByPlaceholderText('Email') as HTMLInputElement
-    const passwordInputElement = screen.getByPlaceholderText('Senha') as HTMLInputElement
+    const emailInputElement = screen.getByPlaceholderText('Digite seu email') as HTMLInputElement
+    const passwordInputElement = screen.getByPlaceholderText('Digite a senha') as HTMLInputElement
 
     expect(emailInputElement.value).toEqual("")
     expect(passwordInputElement.value).toEqual("")

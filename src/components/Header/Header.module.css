@@ -1,0 +1,108 @@
+.container {
+  background-color: var(--color-4);
+  padding: 48px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+/* Botões e Navegação Mobile */
+.mobile-button,
+.nav-mobile {
+  transition: .1s;
+  cursor: pointer;
+}
+
+.mobile-button,
+.mobile-button:focus,
+.mobile-button:hover,
+.mobile-button-active {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-7);
+}
+
+.mobile-button::after,
+.mobile-button-active:after {
+  content: "";
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  box-shadow: 0 7px currentColor, 0 -7px currentColor;
+  transition: .2s;
+}
+
+.mobile-button-active:after {
+  transform: rotate(90deg);
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 6px currentColor, 0 -6px currentColor;
+}
+
+.nav-mobile,
+.nav-mobile button,
+.nav-mobile a {
+  color: var(--color-7);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-mobile {
+  position: absolute;
+  top: 140px;
+  left: 16px;
+  width: 222px;
+  border-radius: 16px;
+  opacity: 0;
+  display: none;
+}
+
+.nav-mobile-active {
+  transition: .3s;
+  transform: initial;
+  opacity: 1;
+  pointer-events: initial;
+  z-index: 100;
+  background-color: var(--color-3);
+  display: unset;
+}
+
+.nav-mobile button,
+.nav-mobile a {
+  display: flex;
+  padding: 16px 0 13px 16px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-6);
+  width: 100%;
+}
+
+.nav-mobile a {
+  border-bottom: none;
+}
+
+.nav-mobile button:hover,
+.nav-mobile a:hover {
+  color: #097a7e;
+  transition: .2s;
+}
+
+.container.active:before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}

@@ -1,0 +1,14 @@
+.modal {
+  height: 300px;
+  width: 240px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 28%;
+  background-color: var(--color-3);
+  border-radius: 16px;
+  padding: 32px 16px;
+  z-index: 2;
+}

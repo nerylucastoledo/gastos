@@ -50,7 +50,7 @@ export const Login = () => {
       {error.length ? <Popup>{error}</Popup> : null}
 
       <img className='logo-center' src={Logo} alt="Logo da empresa" />
-      <p className='paragraph-default'>Preencha as informções para acessar</p>
+      <p className='paragraph-default'>Preencha as informações para acessar</p>
 
       <form onSubmit={handleForm} className='form-inputs'>
         <h1>Faça o login</h1>
@@ -62,7 +62,7 @@ export const Login = () => {
               type="email" 
               id="email" 
               name="email"
-              placeholder="Email" 
+              placeholder="Digite seu email" 
               typeInput="border"
               value={email}
               onChange={({currentTarget}) => setEmail(currentTarget.value)}
@@ -77,7 +77,7 @@ export const Login = () => {
               type="password" 
               id="password" 
               name="password"
-              placeholder="Senha"
+              placeholder="Digite a senha"
               typeInput="border" 
               value={password}
               autoComplete='on'
@@ -86,6 +86,8 @@ export const Login = () => {
             />
             {errorFields.includes('password') && <p className="error-input ">Senha deve ter 8 caracteres</p>}
           </div>
+
+          <a href={'/reset-password'}>Não lembra a senha?</a>
         </div>
 
         <Button typeBtn='principal' id="login" style={{ margin: '32px auto 0' }}>Entrar</Button>
