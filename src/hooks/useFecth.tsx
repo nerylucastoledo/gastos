@@ -2,7 +2,7 @@ import React from 'react'
 
 export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
   const [data, setData] = React.useState<T | null>(null)
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState<string | null>(null)
 
   const configRef = React.useRef(config)
@@ -34,7 +34,11 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
       } catch (error) {
         if (!signal.aborted && error instanceof Error) setError(error.message)
       } finally {
-        if (!signal.aborted) setLoading(false)
+        if (!signal.aborted) {
+          setTimeout(() => {
+            setLoading(false)
+          }, 1000);
+        }
       }
     }
     fetchData()

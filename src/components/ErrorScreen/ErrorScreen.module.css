@@ -1,0 +1,10 @@
+.error {
+  text-align: center;
+  margin: 0 32px;
+  margin-top: 64px;
+}
+
+p {
+  color: var(--color-7);
+  margin-bottom: 32px;
+}

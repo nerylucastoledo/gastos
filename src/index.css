@@ -39,6 +39,12 @@ body {
   margin-top: 2px;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* LOGIN */
 
 .form-inputs {
