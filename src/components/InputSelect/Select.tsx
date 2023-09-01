@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import styles from './Select.module.css'
+import { useDataByFilter } from '../../Context/DataByFilters';
+import { monthsAndYears } from '../../utils/utils';
 
 export interface IBill {
   item: string;
@@ -16,46 +17,30 @@ export interface IBillByDate {
   content: IBill[]
 }
 
-const months = [
-  'Janeiro',
-  'Fevereiro',
-  'Março',
-  'Abril',
-  'Maio',
-  'Junho',
-  'Julho',
-  'Agosto',
-  'Setembro',
-  'Outubro',
-  'Novamebro',
-  'Dezembro'
-]
-
-const currentYearMoreNine = new Date().getFullYear() + 9
-const currentMonth = new Date().getMonth() + 1
-
 export const Select = () => {
-  const [month, setMonth] = useState(months[currentMonth])
-  const [year, setYear] = useState(currentYearMoreNine - 9)
-  const years = [currentYearMoreNine]
-
-  // const { data, loading, error } = useFecth<IBillByDate>(`http://localhost:8080/bill?username=LucasNery260196&date=${month+year}&people=&card=&category=`)
-  
-  // console.log(data)
-  // console.log(loading)
-  // console.log(error)
-
-  for (let i = 1; i <= 11; i++) {
-    years.push(currentYearMoreNine - i)
-  }
+  const { month, setMonth, year, setYear } = useDataByFilter()
+  const { months, years } = monthsAndYears()
 
   return (
     <div className={styles['box-select']}>
-      <select className={styles['select']} defaultValue={month}>
-        {months.map(month => <option key={month} value={month}>{month}</option>)}
+      <select 
+        className={styles['select']} 
+        defaultValue={month} 
+        onChange={({target}) => setMonth(target.value)}
+      >
+        {months.map(uniqueMonth => (
+          <option key={uniqueMonth} value={uniqueMonth}>{uniqueMonth}</option>
+        ))}
       </select>
-      <select className={styles['select']} defaultValue={year}>
-        {years.reverse().map(year => <option key={year} value={year}>{year}</option>)}
+
+      <select 
+        className={styles['select']} 
+        defaultValue={year} 
+        onChange={({target}) => setYear(target.value)}
+      >
+        {years.reverse().map(uniqueYear => (
+          <option key={uniqueYear} value={uniqueYear}>{uniqueYear}</option>
+        ))}
       </select>
     </div>
   )

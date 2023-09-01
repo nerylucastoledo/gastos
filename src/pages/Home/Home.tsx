@@ -1,6 +1,5 @@
 import { Header } from "../../components/Header/Header"
 import styles from './Home.module.css'
-import { useData } from "../../Context/DataContext"
 import { Loading } from "../../components/Loading/Loading"
 import { Select } from "../../components/InputSelect/Select"
 import { ErrorScreen } from "../../components/ErrorScreen/ErrorScreen"
@@ -9,11 +8,10 @@ import { Chart } from "../../components/Chart/Chart"
 import { Card } from "../../components/Card/Card"
 import { LastRegistered } from "../../components/LastRegistered/LastRegistered"
 import { Ranking } from "../../components/Ranking/Ranking"
+import { useDataByFilter } from "../../Context/DataByFilters"
 
 export const Home = () => {
-  const { data, loading, error } = useData()
-
-  console.log(data, error, loading)
+  const { data, loading, error } = useDataByFilter()
 
   if (data === null) return null
   return (
@@ -41,9 +39,9 @@ export const Home = () => {
               </div>
             </div>
 
-            {data.cardList.length ? (
+            {data.content.length ? (
               <>
-                <Card data={data.cardList} />
+                <Card data={data} />
                 <div>
                   <Chart />
                 </div>

@@ -4,13 +4,13 @@ import { Login } from "./pages/Login/Login";
 import { CreateAccount } from "./pages/CreteAccount/CreateAccount";
 import { ResetPassword } from "./pages/ResetPassword/ResetPassword";
 import { Profile } from "./pages/Profile";
-import { DataContextProvider } from "./Context/DataContext";
+import { DataByFilterContextProvider } from "./Context/DataByFilters";
 
 function App() {
 
   return (
     <BrowserRouter>
-      <DataContextProvider>
+      <DataByFilterContextProvider>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/login" element={<Login />}/>
@@ -18,7 +18,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />}/>
           <Route path="/profile" element={<Profile />}/>
         </Routes>
-      </DataContextProvider>
+      </DataByFilterContextProvider>
     </BrowserRouter>
   )
 }
