@@ -10,17 +10,11 @@ interface IInvoice {
 }
 
 export const Card = ({ data }: { data: IDataByFilter} ) => {
-  const invoices = getInvoices();
-
-  function getCardsOfDateSelected() {
-    const cards = new Set()
-    data.content.forEach((transaction) => cards.add(transaction.card))
-    return cards
-  }
+  const invoices = getInvoices()
 
   function getInvoices() {
-    const cardsOfDate = getCardsOfDateSelected();
-    const invoices: IInvoice[] = [];
+    const cardsOfDate = getCardsOfDateSelected()
+    const invoices: IInvoice[] = []
   
     cardsOfDate.forEach((cardName) => {
       const cartao = data.cardList.find((card) => card.name === cardName)
@@ -39,6 +33,12 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
     })
   
     return invoices
+  }
+
+  function getCardsOfDateSelected() {
+    const cards = new Set()
+    data.content.forEach((transaction) => cards.add(transaction.card))
+    return cards
   }
 
   return (

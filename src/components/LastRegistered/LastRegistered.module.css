@@ -1,0 +1,23 @@
+.last-registred {
+  background-color: var(--color-2);
+  margin: 0 16px;
+  border-radius: 32px;
+  padding: 16px;
+}
+
+.last-registred-content {
+  background-color: var(--color-7);
+  padding: 16px;
+  margin-bottom: 8px;
+  border-radius: 32px;
+}
+
+.last-registred-content .box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item {
+  text-align: center;
+  margin-top: 16px;
+}

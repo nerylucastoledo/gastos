@@ -13,6 +13,12 @@ import { useDataByFilter } from "../../Context/DataByFilters"
 export const Home = () => {
   const { data, loading, error } = useDataByFilter()
 
+  const valueToPay = data?.content.reduce((acc, transaction) => 
+    transaction.people === 'Eu' ? 
+    acc + Number(transaction.value) : 
+    0, 0
+  )
+
   if (data === null) return null
   return (
     <div>
@@ -23,34 +29,33 @@ export const Home = () => {
       <main className={styles['main']}>
         {!error && loading && <Loading />}
 
-        {!error && !loading && (
+        {!error && !loading && valueToPay !== undefined && (
           <> 
             <Select />
 
             <div className={styles['box-values']}>
               <div>
                 <h2>Sua parte</h2>
-                <p>{transformValueInReal(0)}</p>
+                <p>{transformValueInReal(valueToPay)}</p>
               </div>
               <div className={styles['line']}></div>
               <div>
                 <h2>Sobrando</h2>
-                <p>{transformValueInReal(Number(data.salary) - 2000)}</p>
+                <p>{transformValueInReal(Number(data.salary) - valueToPay)}</p>
               </div>
             </div>
 
             {data.content.length ? (
               <>
                 <Card data={data} />
-                <div>
-                  <Chart />
-                </div>
+
+                <Chart />
 
                 <h2>Maiores gastos do mês</h2>
                 <Ranking />
 
                 <h2>Últimos cadastros</h2>
-                <LastRegistered />
+                <LastRegistered data={data}/>
               </>
             ) : (
               <>

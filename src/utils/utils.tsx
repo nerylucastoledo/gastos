@@ -17,7 +17,7 @@ export function monthsAndYears() {
     'Agosto',
     'Setembro',
     'Outubro',
-    'Novamebro',
+    'Novembro',
     'Dezembro'
   ]
   const years = []
