@@ -31,7 +31,7 @@ export interface CategoryList {
 }
 
 export interface IDataByFilter {
-  salary: string;
+  salary: number;
   name: string;
   content: Content[];
   cardList: CardList[];

@@ -43,8 +43,8 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
 
   return (
     <div style={{ margin: '24px 16px'}}>
-      <div className={styles['carousel']}>
-        {invoices.map(card => (
+      <div data-testid="carousel" className={styles['carousel']}>
+        {invoices.length ? invoices.map(card => (
           <div 
             key={card.name_card} 
             style={{ backgroundColor: card.color_card, flex: invoices.length > 1 ? '0 0 85%' : '0 0 100%' }} 
@@ -56,7 +56,7 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
             </div>
             <p>{transformValueInReal(card.invoice ?? 0)}</p>
           </div>
-        ))}
+        )) : null}
       </div>
     </div>
   )
