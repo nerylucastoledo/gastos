@@ -1,0 +1,29 @@
+.carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.carousel::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.card {
+  border-radius: 32px;
+  color: var(--color-7);
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+.card div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card p {
+  text-align: center;
+  margin-top: 32px;
+}

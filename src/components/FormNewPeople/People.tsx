@@ -1,4 +1,4 @@
-export const People = () => {
+export const NewPeople = () => {
   return (
     <div>People</div>
   )

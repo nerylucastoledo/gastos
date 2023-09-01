@@ -1,7 +1,8 @@
 import React from "react";
 import { useFecth } from "../hooks/useFecth"
 
-interface ICard {
+export interface ICard {
+  id: number;
   name: string;
   username: string;
   color: string;

@@ -4,9 +4,9 @@ import Logout from '../../assets/img/logout.png'
 import styles from './Header.module.css'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from '../Modal/Modal'
-import { Card } from '../Card/Card'
-import { Category } from '../Category/Category'
-import { People } from '../People/People'
+import { NewCard } from '../FormNewCard/Card'
+import { NewCategory } from '../FormNewCategory/Category'
+import { NewPeople } from '../FormNewPeople/People'
 
 export const Header = () => {
   const navigate = useNavigate()
@@ -39,11 +39,11 @@ export const Header = () => {
   const itemSelected = () => {
     switch (itemModal) {
       case 'card':
-        return <Card />
+        return <NewCard />
       case 'category':
-        return <Category />
+        return <NewCategory />
       case 'people':
-        return <People />
+        return <NewPeople />
       default:
         break
     }

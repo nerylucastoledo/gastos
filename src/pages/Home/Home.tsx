@@ -4,35 +4,66 @@ import { useData } from "../../Context/DataContext"
 import { Loading } from "../../components/Loading/Loading"
 import { Select } from "../../components/InputSelect/Select"
 import { ErrorScreen } from "../../components/ErrorScreen/ErrorScreen"
+import { transformValueInReal } from "../../utils/formatToReal"
+import { Chart } from "../../components/Chart/Chart"
+import { Card } from "../../components/Card/Card"
+import { LastRegistered } from "../../components/LastRegistered/LastRegistered"
+import { Ranking } from "../../components/Ranking/Ranking"
 
 export const Home = () => {
   const { data, loading, error } = useData()
 
-  if (data === null) return null
+  console.log(data, error, loading)
 
+  if (data === null) return null
   return (
     <div>
       <Header />
+      
       {error !== null && <ErrorScreen />}
 
-      {!error && loading && <Loading />}
+      <main className={styles['main']}>
+        {!error && loading && <Loading />}
 
-      {!error && !loading && (
-        <main className={styles['main']}>
-          <Select />
-{/* 
-          <div>
-            <div>
-              <h2>Sua parte</h2>
-              <p>R$ 100.258,90</p>
+        {!error && !loading && (
+          <> 
+            <Select />
+
+            <div className={styles['box-values']}>
+              <div>
+                <h2>Sua parte</h2>
+                <p>{transformValueInReal(0)}</p>
+              </div>
+              <div className={styles['line']}></div>
+              <div>
+                <h2>Sobrando</h2>
+                <p>{transformValueInReal(Number(data.salary) - 2000)}</p>
+              </div>
             </div>
-            <div>
-              <h2>Sobrando</h2>
-              <p>R$ 100.258,90</p>
-            </div>
-          </div> */}
-        </main>
-      )}
+
+            {data.cardList.length ? (
+              <>
+                <Card data={data.cardList} />
+                <div>
+                  <Chart />
+                </div>
+
+                <h2>Maiores gastos do mês</h2>
+                <Ranking />
+
+                <h2>Últimos cadastros</h2>
+                <LastRegistered />
+              </>
+            ) : (
+              <>
+                <div style={{ padding: '32px' }}>
+                  <p style={{ textAlign: 'center' }}>Boooa! <br /> Você ainda não tem nenhum gasto para esse mês \o/</p>
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </main>
     </div>
   )
 }

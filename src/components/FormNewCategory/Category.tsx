@@ -1,4 +1,4 @@
-export const Category = () => {
+export const NewCategory = () => {
   return (
     <div>Category</div>
   )
