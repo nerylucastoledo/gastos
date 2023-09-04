@@ -43,7 +43,7 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
 
   return (
     <div style={{ margin: '24px 0 24px 16px'}}>
-      <div data-testid="carousel" className={styles['carousel']}>
+      <div data-testid="carousel" className={styles['carousel']} style={{ marginRight: invoices.length > 1 ? '0' : '16px' }}>
         {invoices.length ? invoices.map(card => (
           <div 
             key={card.name_card} 

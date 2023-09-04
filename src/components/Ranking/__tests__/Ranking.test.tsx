@@ -16,17 +16,17 @@ describe('Ranking component with data', () => {
   it('they should be ranked from the highest spending to the lowest and with their titles inside the card', () => {
     const boxContent = screen.getByTestId('ranking')
 
-    expect(boxContent.children[0].innerHTML.includes('Comida')).toBeTruthy()
-    expect(boxContent.children[1].innerHTML.includes('Shopping')).toBeTruthy()
-    expect(boxContent.children[2].innerHTML.includes('Teste de categoria')).toBeTruthy()
-    expect(boxContent.children[3].innerHTML.includes('Carro')).toBeTruthy()
+    expect(boxContent.children[0].innerHTML.includes('Shopping')).toBeTruthy()
+    expect(boxContent.children[1].innerHTML.includes('Comida')).toBeTruthy()
+    expect(boxContent.children[2].innerHTML.includes('Carro')).toBeTruthy()
+    expect(boxContent.children[3].innerHTML.includes('Teste de categoria')).toBeTruthy()
   })
 
   it('should show the value inside the card of each item', () => {
-    expect(screen.getByText('R$ 14.500,00')).toBeInTheDocument()
     expect(screen.getByText('R$ 10.000,00')).toBeInTheDocument()
-    expect(screen.getByText('R$ 2.625,10')).toBeInTheDocument()
+    expect(screen.getByText('R$ 9.500,00')).toBeInTheDocument()
     expect(screen.getByText('R$ 1.000,00')).toBeInTheDocument()
+    expect(screen.getByText('R$ 125,10')).toBeInTheDocument()
   })
 })
 

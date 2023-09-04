@@ -14,15 +14,16 @@ export const Ranking = ({ data }: { data: IDataByFilter }) => {
 
   categorys.forEach((name_category: string) => {
     const total = data.content
+      .filter((transaction) => transaction.people === 'Eu')
       .filter((transaction) => transaction.category === name_category)
       .reduce((total, transaction) => Number(total) + Number(transaction.value), 0)
-  
+
     ranking.push({ name_category, total })
   })
 
   function getCategorys() {
     const categorys = new Set<string>()
-    data.content.forEach((transaction) => categorys.add(transaction.category))
+    data.content.forEach((transaction) => transaction.people === 'Eu' && categorys.add(transaction.category))
     return categorys
   }
 
