@@ -1,9 +1,11 @@
 .ranking {
   display: flex;
   gap: 16px;
-  overflow-x: scroll;
+  overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  margin-bottom: 24px;
+  margin-left: 16px;
 }
 
 .ranking::-webkit-scrollbar {

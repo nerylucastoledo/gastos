@@ -11,7 +11,7 @@ interface IRankingCategory {
 export const Ranking = ({ data }: { data: IDataByFilter }) => {
   const ranking: IRankingCategory[] = []
   const categorys = getCategorys()
-  
+
   categorys.forEach((name_category: string) => {
     const total = data.content
       .filter((transaction) => transaction.category === name_category)
@@ -36,7 +36,7 @@ export const Ranking = ({ data }: { data: IDataByFilter }) => {
   }
 
   return (
-    <div style={{ marginBottom: '24px', marginLeft: '16px' }} className={styles['ranking']}>
+    <div className={styles['ranking']} data-testid='ranking'>
       {ranking.length ? ranking.map((item, index) => (
         <div className={styles['ranking-box']} key={item.name_category}>
           <div className={styles['ranking-box-position']}>
