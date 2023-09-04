@@ -3,21 +3,19 @@ import styles from './Home.module.css'
 import { Loading } from "../../components/Loading/Loading"
 import { Select } from "../../components/InputSelect/Select"
 import { ErrorScreen } from "../../components/ErrorScreen/ErrorScreen"
-import { transformValueInReal } from "../../utils/formatToReal"
 import { Chart } from "../../components/Chart/Chart"
 import { Card } from "../../components/Card/Card"
 import { LastRegistered } from "../../components/LastRegistered/LastRegistered"
 import { Ranking } from "../../components/Ranking/Ranking"
 import { useDataByFilter } from "../../Context/DataByFilters"
+import { transformValueInReal } from "../../utils/utils"
 
 export const Home = () => {
   const { data, loading, error } = useDataByFilter()
 
-  const valueToPay = data?.content.reduce((acc, transaction) => 
-    transaction.people === 'Eu' ? 
-    acc + Number(transaction.value) : 
-    0, 0
-  )
+  const valueToPay = data?.content.reduce((acc, item) => {
+    return item.people === 'Eu' ? Number(acc) + Number(item.value) : acc
+  }, 0)
 
   if (data === null) return null
   return (
@@ -51,8 +49,8 @@ export const Home = () => {
 
                 <Chart />
 
-                <h2>Maiores gastos do mês</h2>
-                <Ranking />
+                <h2>Ranking gastos do mês</h2>
+                <Ranking data={data}/>
 
                 <h2>Últimos cadastros</h2>
                 <LastRegistered data={data}/>

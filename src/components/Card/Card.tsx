@@ -1,7 +1,7 @@
 import styles from './Card.module.css'
 import CardImg from '../../assets/img/card.png'
-import { transformValueInReal } from '../../utils/formatToReal'
 import { IDataByFilter } from '../../Context/DataByFilters'
+import { transformValueInReal } from '../../utils/utils';
 
 interface IInvoice {
   color_card: string;
@@ -17,17 +17,17 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
     const invoices: IInvoice[] = []
   
     cardsOfDate.forEach((cardName) => {
-      const cartao = data.cardList.find((card) => card.name === cardName)
+      const card = data.cardList.find((card) => card.name === cardName)
   
-      if (cartao) {
+      if (card) {
         const invoice = data.content
           .filter((transaction) => transaction.card === cardName)
           .reduce((total, transaction) => total + transaction.value, 0)
   
         invoices.push({
-          name_card: cartao.name,
+          name_card: card.name,
           invoice,
-          color_card: cartao.color,
+          color_card: card.color,
         })
       }
     })
@@ -42,7 +42,7 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
   }
 
   return (
-    <div style={{ margin: '24px 16px'}}>
+    <div style={{ margin: '24px 0 24px 16px'}}>
       <div data-testid="carousel" className={styles['carousel']}>
         {invoices.length ? invoices.map(card => (
           <div 
