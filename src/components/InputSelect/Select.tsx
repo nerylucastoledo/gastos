@@ -9,6 +9,7 @@ export interface IBill {
   card: string;
   people: string;
   category: string;
+  date: string;
 }
 
 export interface IBillByDate {

@@ -1,0 +1,18 @@
+.loading-chart {
+  height: 200px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.custom {
+  background-color: var(--color-6);
+  padding: 6px;
+  border-radius: 16px;
+  color: #fff;
+}
+
+.chart {
+  margin-bottom: 24px;
+}
