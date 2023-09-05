@@ -3,11 +3,7 @@ import { Input } from "../input/Input"
 import { Button } from "../Button/Button"
 import { sendData } from "../../utils/SendDataApi"
 import { Popup } from "../Popup/Popup"
-
-interface ShowPopup {
-  message: string
-  background: string;
-}
+import { ShowPopup } from "../../utils/utils"
 
 export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const [name, setName] = useState('')

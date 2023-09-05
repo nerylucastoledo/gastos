@@ -32,3 +32,8 @@ export function monthsAndYears() {
 
   return { currentYear, currentMonth, years, months  }
 }
+
+export interface ShowPopup {
+  message: string
+  background: string;
+}

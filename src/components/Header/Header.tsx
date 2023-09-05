@@ -5,7 +5,7 @@ import styles from './Header.module.css'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from '../Modal/Modal'
 import { NewCard } from '../FormNewCard/NewCard'
-import { NewCategory } from '../FormNewCategory/Category'
+import { NewCategory } from '../FormNewCategory/NewCategory'
 import { NewPeople } from '../FormNewPeople/People'
 
 export const Header = () => {
@@ -39,9 +39,9 @@ export const Header = () => {
   const itemSelected = () => {
     switch (itemModal) {
       case 'card':
-        return <NewCard setIsModalOpen={setIsModalOpen}/>
+        return <NewCard setIsModalOpen={setIsModalOpen} />
       case 'category':
-        return <NewCategory />
+        return <NewCategory setIsModalOpen={setIsModalOpen} />
       case 'people':
         return <NewPeople />
       default:
