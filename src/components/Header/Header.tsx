@@ -5,8 +5,7 @@ import styles from './Header.module.css'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from '../Modal/Modal'
 import { NewCard } from '../FormNewCard/NewCard'
-import { NewCategory } from '../FormNewCategory/NewCategory'
-import { NewPeople } from '../FormNewPeople/People'
+import { FormInsert } from '../FormGeneric/FormInsert'
 
 export const Header = () => {
   const navigate = useNavigate()
@@ -41,9 +40,9 @@ export const Header = () => {
       case 'card':
         return <NewCard setIsModalOpen={setIsModalOpen} />
       case 'category':
-        return <NewCategory setIsModalOpen={setIsModalOpen} />
+        return <FormInsert nameInput='categoria' url='category' setIsModalOpen={setIsModalOpen} />
       case 'people':
-        return <NewPeople />
+        return <FormInsert nameInput='pessoa' url='people' setIsModalOpen={setIsModalOpen} />
       default:
         break
     }

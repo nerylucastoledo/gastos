@@ -1,12 +1,18 @@
-import { useState } from "react"
-import { Input } from "../input/Input"
-import { Popup } from "../Popup/Popup"
-import { ShowPopup } from "../../utils/utils"
-import { Button } from "../Button/Button"
-import { sendData } from "../../utils/SendDataApi"
+import React, { useState } from 'react'
+import { Button } from '../Button/Button'
+import { Input } from '../input/Input'
+import { Popup } from '../Popup/Popup'
+import { ShowPopup } from '../../utils/utils'
+import { sendData } from '../../utils/SendDataApi'
 
-export const NewCategory = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
-  const [category, setCategory] = useState('')
+interface IProps {
+  nameInput: string;
+  url: string;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>> 
+}
+
+export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
+  const [name, setName] = useState('')
   const [errorCategory, setErrorCategory] = useState(false)
   const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
   const username = window.localStorage.getItem('username')
@@ -14,20 +20,20 @@ export const NewCategory = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch
   const insert = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (!category.length) return setErrorCategory(true)
+    if (!name.length) return setErrorCategory(true)
 
     const config = {
       method: 'POST',
-      body: JSON.stringify({ name: category, username }),
+      body: JSON.stringify({ name: name, username }),
       headers: {
       'Content-Type': 'application/json',
       },
     }
 
-    const response = sendData('http://localhost:8080/category', { ...config })
+    const response = sendData(`http://localhost:8080/${url}`, { ...config })
     response.then((res) => {
       if (res.ok) {
-        notification({ message: `Ihuul! A categoria ${category} foi cadastrada. o/`, background: 'green' })
+        notification({ message: `Ihuul! ${name} foi cadastrado(a). o/`, background: 'green' })
         return
       }
 
@@ -50,17 +56,17 @@ export const NewCategory = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch
 
       <div style={{ marginBottom: '32px' }}>
         <Input 
-          label="Nome da categoria" 
+          label={`Nome da ${nameInput}`}
           typeInput="normal" 
-          placeholder="Digite a categoria" 
+          placeholder="Digite o nome" 
           type="text"
-          data-testid='input-category'
-          value={category}
-          onChange={({ currentTarget }) => setCategory(currentTarget.value)}
+          data-testid='input-name'
+          value={name}
+          onChange={({ currentTarget }) => setName(currentTarget.value)}
           style={{ width: '100%', marginTop: '6px', border: errorCategory ? '1px solid red' : 'unset' }}
           styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
         />
-        {errorCategory && <p className="error-input">Categoria não pode ser vazia</p>}
+        {errorCategory && <p className="error-input">{nameInput} não pode ser vazia</p>}
       </div>
 
       <Button typeBtn='principal' id="criar" style={{ marginTop: '32px', width: '100%' }}>Inserir</Button>
