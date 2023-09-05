@@ -12,14 +12,14 @@ describe('New category component', () => {
     render(<NewCategory setIsModalOpen={setIsModalOpen}/>)
   })
 
-  it('deveria renderizar com 1 input e 1 botão na tela', () => {
+  it('should render with 1 input and 1 button on the screen', () => {
     expect(screen.getByTestId('input-category')).toBeInTheDocument()
     expect(screen.getAllByRole('textbox')).toHaveLength(1)
     expect(screen.getByRole('button')).toBeInTheDocument()
     expect(screen.getByRole('button').innerHTML).toEqual('Inserir')
   })
 
-  it('deveria atualizar o valor quando digitado', () => {
+  it('should update the value when typed', () => {
     const inputCategory = screen.getByTestId('input-category') as HTMLInputElement
 
     expect(inputCategory.value).toEqual('')
@@ -29,7 +29,7 @@ describe('New category component', () => {
     expect(inputCategory.value).toEqual('Test category')
   })
 
-  it('deveria aparecer um erro no input ao clicar em enviar sem preencher o nome', () => {
+  it('an error should appear in the input when clicking send without filling in the category', () => {
     const button = screen.getByRole('button')
 
     expect(() => screen.getByText('Categoria não pode ser vazia')).toThrow('Unable to find an element')
@@ -39,7 +39,7 @@ describe('New category component', () => {
     expect(screen.getByText('Categoria não pode ser vazia')).toBeInTheDocument()
   })
   
-  it('deveria aparecer o popup com a mensagem de "Ocorreu um erro interno!" quando a api der erro', async () => {
+  it('the popup should appear with the message "Ocorreu um erro interno!" when the api gives erro', async () => {
     const button = screen.getByRole('button')
     const inputName = screen.getByTestId('input-category') as HTMLInputElement
 

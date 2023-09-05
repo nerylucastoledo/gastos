@@ -12,17 +12,17 @@ describe('New card component', () => {
     render(<NewCard setIsModalOpen={setIsModalOpen}/>)
   })
 
-  it('deveria renderizar com 2 inputs na tela', () => {
+  it('should render with 2 inputs on the screen', () => {
     expect(screen.getByTestId('input-name')).toBeInTheDocument()
     expect(screen.getByTestId('input-color')).toBeInTheDocument()
   })
 
-  it('deveria renderizar com 1 botão na tela', () => {
+  it('should render with 1 button on the screen', () => {
     expect(screen.getByRole('button')).toBeInTheDocument()
     expect(screen.getByRole('button').innerHTML).toEqual('Inserir')
   })
 
-  it('deveria atualizar o valor quando digitado', () => {
+  it('should update the value when typed', () => {
     const inputName = screen.getByTestId('input-name') as HTMLInputElement
     const inputColor = screen.getByTestId('input-color') as HTMLInputElement
 
@@ -36,7 +36,7 @@ describe('New card component', () => {
     expect(inputColor.value).toEqual('#ffffff')
   })
 
-  it('deveria aparecer um erro no input ao clicar em enviar sem preencher o nome', () => {
+  it('an error should appear in the input when clicking send without filling in the name', () => {
     const button = screen.getByRole('button')
 
     expect(() => screen.getByText('Nome não pode ser vazio')).toThrow('Unable to find an element')
@@ -46,7 +46,7 @@ describe('New card component', () => {
     expect(screen.getByText('Nome não pode ser vazio')).toBeInTheDocument()
   })
   
-  it('deveria aparecer o popup com a mensagem de "Ocorreu um erro interno!" quando a api der erro', async () => {
+  it('the popup should appear with the message "Ocorreu um erro interno!" when the api gives error', async () => {
     const button = screen.getByRole('button')
     const inputName = screen.getByTestId('input-name') as HTMLInputElement
     const inputColor = screen.getByTestId('input-color') as HTMLInputElement
