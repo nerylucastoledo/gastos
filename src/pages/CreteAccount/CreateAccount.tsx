@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button/Button"
 import { Input } from "../../components/input/Input"
 import { Popup } from "../../components/Popup/Popup"
+import { sendData } from "../../utils/SendDataApi"
 
 export const CreateAccount = () => {
   const navigate = useNavigate()
@@ -17,7 +18,7 @@ export const CreateAccount = () => {
   const [error, setError] = useState('')
   const [errorFields, setErrorFields] = useState<string[]>([])
 
-  const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorFields([])
 
@@ -28,7 +29,7 @@ export const CreateAccount = () => {
     if (password.length <= 7) setErrorFields((previous) => [...previous, 'password'])
 
     if (name.length && lastname.length && salary.length && email.length && password.length >= 8) {
-      fetch('http://localhost:8080/user/create', {
+      const config = {
         method: 'POST',
         body: JSON.stringify({
           name,
@@ -39,9 +40,11 @@ export const CreateAccount = () => {
         }),
         headers: {
           'Content-Type': 'application/json',
-        },
-      })
-      .then((res) => {
+        }
+      }
+
+      const response = sendData('http://localhost:8080/user/create', { ...config })
+      response.then((res) => {
         if (!res.ok) {
           if (res.status === 500) throw new Error('email')
           setError('Ocorreu um erro interno, tente novamente!')

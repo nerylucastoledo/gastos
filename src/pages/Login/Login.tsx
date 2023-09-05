@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button/Button"
 import { Input } from "../../components/input/Input"
 import { Popup } from "../../components/Popup/Popup"
+import { sendData } from "../../utils/SendDataApi"
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -14,7 +15,7 @@ export const Login = () => {
   const [error, setError] = useState('')
   const [errorFields, setErrorFields] = useState<string[]>([])
 
-  const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorFields([])
 
@@ -22,25 +23,27 @@ export const Login = () => {
     if (password.length < 8) setErrorFields((previous) => [...previous, 'password'])
     if (email.length && password.length >= 8) {
 
-    fetch('http://localhost:8080/user/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: {
-      'Content-Type': 'application/json',
-      },
-    })
-    .then(async (res) => {
-      const json = await res.json().then(json => json)
-      if (json.username) {
-        window.localStorage.setItem('username', json.username)
-        return navigate('/')
+      const config = {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: {
+        'Content-Type': 'application/json',
+        },
       }
-      if (json.status === 401) throw new Error(json.message)
-      if (!res.ok) throw new Error("Ocorreu um erro interno!")
-    })
-    .catch(({ message }) => {
-      setError(message)
-      setTimeout(() => setError(''), 2000)
+
+      const response = sendData('http://localhost:8080/user/login', { ...config })
+      response.then(async (res) => {
+        const json = await res.json().then(json => json)
+        if (json.username) {
+          window.localStorage.setItem('username', json.username)
+          return navigate('/')
+        }
+        if (json.status === 401) throw new Error(json.message)
+        if (!res.ok) throw new Error("Ocorreu um erro interno!")
+      })
+      .catch(({ message }) => {
+        setError(message)
+        setTimeout(() => setError(''), 2000)
       })
     }
   }

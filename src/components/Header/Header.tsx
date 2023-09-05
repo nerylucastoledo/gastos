@@ -30,7 +30,7 @@ export const Header = () => {
     if (isModalOpen) {
       const target = event.target as HTMLElement
 
-      if (!target.classList.value.includes('modal')) {
+      if (target.classList.value.includes('container')) {
         setIsModalOpen(false)
       }
     }
@@ -39,7 +39,7 @@ export const Header = () => {
   const itemSelected = () => {
     switch (itemModal) {
       case 'card':
-        return <NewCard />
+        return <NewCard setIsModalOpen={setIsModalOpen}/>
       case 'category':
         return <NewCategory />
       case 'people':

@@ -20,7 +20,7 @@ interface ITooltip {
 }
 
 const CustomTooltip = ({ payload, label }: ITooltip) => {
-  if (payload && payload.length) {
+  if (payload?.length) {
     return (
       <div className={styles['custom']}>
         <p className={styles['label']}>Mês: <b>{label}</b></p>
