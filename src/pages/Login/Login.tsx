@@ -15,7 +15,7 @@ export const Login = () => {
   const [error, setError] = useState('')
   const [errorFields, setErrorFields] = useState<string[]>([])
 
-  const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorFields([])
 

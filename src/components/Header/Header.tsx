@@ -4,7 +4,7 @@ import Logout from '../../assets/img/logout.png'
 import styles from './Header.module.css'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from '../Modal/Modal'
-import { NewCard } from '../FormNewCard/Card'
+import { NewCard } from '../FormNewCard/NewCard'
 import { NewCategory } from '../FormNewCategory/Category'
 import { NewPeople } from '../FormNewPeople/People'
 

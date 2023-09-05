@@ -16,7 +16,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
   const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
   const username = window.localStorage.getItem('username')
 
-  const insert = async (event: React.FormEvent<HTMLFormElement>) => {
+  const insert = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (!name.length) return setErrorName(true)
@@ -59,6 +59,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
           typeInput="normal" 
           placeholder="Digite o nome" 
           type="text"
+          data-testid='input-name'
           value={name}
           onChange={({ currentTarget }) => setName(currentTarget.value)}
           style={{ width: '100%', marginTop: '6px', border: errorName ? '1px solid red' : 'unset' }}
@@ -69,7 +70,10 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
 
       <div>
         <Input
-          type="color" id="body" name="body"
+          type="color" 
+          data-testid='input-color'
+          id="body" 
+          name="body"
           typeInput="normal"
           label="Cor do cartão"
           required
