@@ -142,7 +142,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
         <>
           <Modal>
             {showPopup ? <Popup background={'red'}>Ocorreu um erro interno!</Popup> : null}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} data-testid={`form-${nameItem}`}>
               <div style={{ marginBottom: '32px' }}>
                 <Input
                   label={KEY_MAP[nameItem]}
@@ -185,7 +185,9 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
         <>
           <Modal>
             {showPopup ? <Popup background={'red'}>Ocorreu um erro interno!</Popup> : null}
-            <p className={styles['text-delete']}>Todos os dados com esse nome serão deletados. <br></br> Tem certeza que quer deletar o(a) <b>{itemSelected?.name}</b>?</p>
+            <p data-testid="information-message" className={styles['text-delete']}>
+              Todos os dados com esse nome serão deletados. <br></br> Tem certeza que quer deletar o(a) <b>{itemSelected?.name}</b>?
+            </p>
             <div className={styles['btn-delete']}>
               <Button typeBtn='accepted' onClick={() => handleSubmit()}>Sim</Button>
               <Button typeBtn='refused' onClick={() => setIsModalOpenDelete(false)}>Não</Button>
@@ -194,7 +196,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
       )}
 
       <h2 className={styles['title']}>{title}</h2>
-      <div className={styles['profile']}>
+      <div data-testid='profile' className={styles['profile']}>
         {data ? data.map((item) => (
           <div className={styles['profile-item']} key={`${item.name} - ${item.id}`}>
             <p>{item.name}</p>

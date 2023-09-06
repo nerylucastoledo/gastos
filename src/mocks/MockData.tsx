@@ -31,19 +31,19 @@ export const mockDataProps = {
     {
       "id": 603,
       "name": "Nubank",
-      "username": "LucasNery260196",
+      "username": "test",
       "color": "purple"
     },
     {
       "id": 652,
       "name": "Samsung",
-      "username": "LucasNery260196",
+      "username": "test",
       "color": "black"
     },
     {
       "id": 653,
       "name": "Picpay",
-      "username": "LucasNery260196",
+      "username": "test",
       "color": "green"
     }
   ],
@@ -141,22 +141,76 @@ export const mockDataRanking = {
     {
       "id": 603,
       "name": "Nubank",
-      "username": "LucasNery260196",
+      "username": "test",
       "color": "purple"
     },
     {
       "id": 652,
       "name": "Samsung",
-      "username": "LucasNery260196",
+      "username": "test",
       "color": "black"
     },
     {
       "id": 653,
       "name": "Picpay",
-      "username": "LucasNery260196",
+      "username": "test",
       "color": "green"
     }
   ],
   "peopleList": [],
   "categoryList": []
 }
+
+export const mockProfileItemCardList = [
+  {
+    "id": 452,
+    "name": "Cartao 1",
+    "username": "test"
+  },
+  {
+    "id": 653,
+    "name": "Cartao 2",
+    "username": "test"
+},
+  {
+    "id": 654,
+    "name": "Cartao 3",
+    "username": "test"
+  }
+]
+
+export const mockProfileItemCategoryList = [
+  {
+    "id": 452,
+    "name": "Category 1",
+    "username": "test"
+  },
+  {
+    "id": 653,
+    "name": "Category 2",
+    "username": "test"
+},
+  {
+    "id": 654,
+    "name": "Category 3",
+    "username": "test"
+  }
+]
+
+export const mockProfileItemPeopleList = [
+  {
+    "id": 452,
+    "name": "People 1",
+    "username": "test"
+  },
+  {
+    "id": 653,
+    "name": "People 2",
+    "username": "test"
+},
+  {
+    "id": 654,
+    "name": "People 3",
+    "username": "test"
+  }
+]
