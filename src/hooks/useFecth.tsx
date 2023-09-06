@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
   const [data, setData] = React.useState<T | null>(null)
   const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState<string | null>(null)
+  const [update, setUpdate] = useState(false)
 
   const configRef = React.useRef(config)
   configRef.current = config
@@ -15,6 +16,7 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
     const fetchData = async () => {
       setLoading(true)
       setData(null)
+      setUpdate(false)
 
       try {
         const response = await fetch(url, {
@@ -44,7 +46,7 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
     fetchData()
 
     return () => controller.abort()
-  }, [url, config])
+  }, [url, config, update])
 
-  return { data, loading, error }
+  return { data, loading, error, setUpdate, update }
 }

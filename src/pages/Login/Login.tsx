@@ -34,8 +34,9 @@ export const Login = () => {
       const response = sendData('http://localhost:8080/user/login', { ...config })
       response.then(async (res) => {
         const json = await res.json().then(json => json)
-        if (json.username) {
+        if (json.username && json.id) {
           window.localStorage.setItem('username', json.username)
+          window.localStorage.setItem('id', json.id)
           return navigate('/')
         }
         if (json.status === 401) throw new Error(json.message)

@@ -32,11 +32,11 @@ describe('New category component', () => {
   it('an error should appear in the input when clicking send without filling in the category', () => {
     const button = screen.getByRole('button')
 
-    expect(() => screen.getByText('categoria não pode ser vazia')).toThrow('Unable to find an element')
+    expect(() => screen.getByText('Nome categoria não pode ser vazia')).toThrow('Unable to find an element')
 
     fireEvent.click(button)
 
-    expect(screen.getByText('categoria não pode ser vazia')).toBeInTheDocument()
+    expect(screen.getByText('Nome da categoria não pode ser vazia')).toBeInTheDocument()
   })
   
   it('the popup should appear with the message "Ocorreu um erro interno!" when the api gives erro', async () => {
@@ -79,11 +79,11 @@ describe('New people component', () => {
   it('an error should appear in the input when clicking send without filling in the people', () => {
     const button = screen.getByRole('button')
 
-    expect(() => screen.getByText('pessoa não pode ser vazia')).toThrow('Unable to find an element')
+    expect(() => screen.getByText('Nome da pessoa não pode ser vazia')).toThrow('Unable to find an element')
 
     fireEvent.click(button)
 
-    expect(screen.getByText('pessoa não pode ser vazia')).toBeInTheDocument()
+    expect(screen.getByText('Nome da pessoa não pode ser vazia')).toBeInTheDocument()
   })
   
   it('the popup should appear with the message "Ocorreu um erro interno!" when the api gives erro', async () => {

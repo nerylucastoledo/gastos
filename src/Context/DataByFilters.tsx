@@ -47,6 +47,7 @@ interface IDataByFilterContext {
   setMonth: React.Dispatch<React.SetStateAction<string>>;
   year: string;
   setYear: React.Dispatch<React.SetStateAction<string>>;
+  setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const DataContext = React.createContext<IDataByFilterContext | null>(null)
@@ -64,7 +65,7 @@ export const DataByFilterContextProvider = ({ children }: React.PropsWithChildre
   const [month, setMonth] = useState(currentMonth)
   const [year, setYear] = useState(currentYear)
 
-  const { data, loading, error } = useFecth<IDataByFilter>(
+  const { data, loading, error, setUpdate } = useFecth<IDataByFilter>(
     `http://localhost:8080/bill?username=${username}&date=${month+year}`
   )
 
@@ -75,7 +76,8 @@ export const DataByFilterContextProvider = ({ children }: React.PropsWithChildre
     month, 
     setMonth, 
     year, 
-    setYear 
+    setYear,
+    setUpdate
   }}
   >
     {children}

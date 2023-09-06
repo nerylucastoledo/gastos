@@ -66,7 +66,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
           style={{ width: '100%', marginTop: '6px', border: errorCategory ? '1px solid red' : 'unset' }}
           styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
         />
-        {errorCategory && <p className="error-input">{nameInput} não pode ser vazia</p>}
+        {errorCategory && <p className="error-input">Nome da {nameInput} não pode ser vazia</p>}
       </div>
 
       <Button typeBtn='principal' id="criar" style={{ marginTop: '32px', width: '100%' }}>Inserir</Button>

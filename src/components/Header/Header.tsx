@@ -61,20 +61,17 @@ export const Header = () => {
         <button onClick={() => openModal('card')}>Inserir cartão</button>
         <button onClick={() => openModal('category')}>Inserir categoria</button>
         <button onClick={() => openModal('people')}>Inserir pessoa</button>
-        <a href='/people'>Meu perfil</a>
+        <a href='/profile'>Meu perfil</a>
       </nav>
 
-      <img src={Logo} alt="Logo da empresa" />
+      <img onClick={() => navigate('/')} src={Logo} alt="Logo da empresa" />
 
       <img src={Logout} onClick={handleLogout} alt="Sair" />
 
       {isModalOpen && (
-        <>
-        
-        <p>Ola</p>
         <Modal>
           {itemSelected()}
-        </Modal></>
+        </Modal>
       )}
     </div>
   )
