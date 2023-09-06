@@ -19,6 +19,13 @@ interface IProps {
   setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface IBodyData {
+  id: number;
+  name: string; 
+  username: string;
+  color?: string;
+}
+
 const KEY_MAP = {
   "category": "Categoria",
   "people": "Pessoa",
@@ -29,6 +36,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
   const [isModalOpenEdit, setIsModalOpenEdit] = useState(false)
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
   const [name, setName] = useState('')
+  const [color, setColor] = useState('')
   const [itemSelected, setItemSelected] = useState<CardList | PeopleList | CategoryList | null>(null)
   const [showPopup, setShowPopup] = useState(false)
   
@@ -37,6 +45,11 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
   const openModalEdit = (item: CardList | PeopleList | CategoryList) => {
     setItemSelected(item)
     setName(item.name)
+    
+    if ('color' in item) {
+      setColor(item.color)
+    }
+    
     setIsModalOpenEdit(true)
   }
 
@@ -58,19 +71,26 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
   }
 
   const updateItem = () => {
-    if (itemSelected) {
+    if (itemSelected && username) {
+
+      const body: IBodyData = {
+        id: itemSelected.id,
+        name: name, 
+        username: username
+      }
+
+      if (color && color.length > 0) {
+        body.color = color;
+      }
+
       const config = {
         method: 'PUT',
-        body: JSON.stringify({ 
-          id: itemSelected.id,
-          name: name, 
-          username: username
-        }),
+        body: JSON.stringify(body),
         headers: {
-        'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
       }
-  
+
       const response = sendData(`http://localhost:8080/${nameItem}/${itemSelected?.id}`, { ...config })
       response.then((res) => {
         if (res.ok) {
@@ -123,23 +143,42 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
           <Modal>
             {showPopup ? <Popup background={'red'}>Ocorreu um erro interno!</Popup> : null}
             <form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: '32px' }}>
-              <Input
-                label={KEY_MAP[nameItem]}
-                typeInput="normal" 
-                placeholder="Digite o nome" 
-                type="text"
-                data-testid='input-name'
-                value={name}
-                onChange={({ currentTarget }) => setName(currentTarget.value)}
-                style={{ width: '100%', marginTop: '6px' }}
-                styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
-              />
-            </div>
+              <div style={{ marginBottom: '32px' }}>
+                <Input
+                  label={KEY_MAP[nameItem]}
+                  typeInput="normal" 
+                  placeholder="Digite o nome" 
+                  type="text"
+                  data-testid='input-name'
+                  value={name}
+                  onChange={({ currentTarget }) => setName(currentTarget.value)}
+                  style={{ width: '100%', marginTop: '6px' }}
+                  styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+                />
+              </div>
 
-            <Button typeBtn='principal' id="criar" style={{ marginTop: '32px', width: '100%' }}>Atualizar</Button>
-          </form>
-        </Modal></>
+              {nameItem === 'card' && (
+                <div style={{ marginBottom: '32px' }}>
+                  <Input
+                    type="color" 
+                    data-testid='input-color'
+                    id="body" 
+                    name="body"
+                    typeInput="normal"
+                    label="Cor do cartão"
+                    required
+                    styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+                    style={{ width: '100%', marginTop: '6px', padding: '4px 16px' }}
+                    onChange={({ target }) => setColor(target.value)}
+                    value={color}
+                  />
+                </div>
+              )}
+
+              <Button typeBtn='principal' id="criar" style={{ marginTop: '32px', width: '100%' }}>Atualizar</Button>
+            </form>
+          </Modal>
+        </>
       )}
 
       {isModalOpenDelete && (
