@@ -3,15 +3,15 @@ export const mockDataProps = {
   "name": "Lucas",
   "content": [
     {
-      "item": "Teste item",
+      "item": "Teste item 1",
       "value": 125.1,
       "description": "Teste de descrição",
-      "card": "Picpay",
+      "card": "Nubank",
       "people": "Eu",
       "category": "Teste de categoria"
     },
     {
-      "item": "Teste item",
+      "item": "Teste item 2",
       "value": 2000,
       "description": "Teste de descrição",
       "card": "Picpay",
@@ -19,7 +19,7 @@ export const mockDataProps = {
       "category": "Teste de categoria"
     },
     {
-      "item": "Teste item",
+      "item": "Teste item 3",
       "value": 2500,
       "description": "Teste de descrição",
       "card": "Samsung",

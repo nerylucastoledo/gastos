@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
-  const [data, setData] = React.useState<T | null>(null)
-  const [loading, setLoading] = React.useState(true)
-  const [error, setError] = React.useState<string | null>(null)
+  const [data, setData] = useState<T | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [update, setUpdate] = useState(false)
 
-  const configRef = React.useRef(config)
+  const configRef = useRef(config)
   configRef.current = config
 
-  React.useEffect(() => {
+  useEffect(() => {
     const controller = new AbortController()
     const { signal } = controller
     

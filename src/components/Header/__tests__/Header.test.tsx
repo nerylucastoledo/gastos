@@ -53,20 +53,23 @@ describe('Componente header', () => {
     const btnNewCard = screen.getAllByRole('button')[1]
 
     fireEvent.click(btnNewCard)
-    expect(screen.getByText('Card')).toBeVisible()
+    expect(screen.getByText('Nome do cartão')).toBeVisible()
+    expect(screen.getByTestId('input-name')).toBeVisible()
   })
 
   it('should show modal when click insert category', async () => {
     const btnNewCard = screen.getAllByRole('button')[2]
 
     fireEvent.click(btnNewCard)
-    expect(screen.getByText('Category')).toBeVisible()
+    expect(screen.getByText('Nome da categoria')).toBeVisible()
+    expect(screen.getByTestId('input-name')).toBeVisible()
   })
 
   it('should show modal when click insert people', async () => {
     const btnNewCard = screen.getAllByRole('button')[3]
 
     fireEvent.click(btnNewCard)
-    expect(screen.getByText('People')).toBeVisible()
+    expect(screen.getByText('Nome da pessoa')).toBeVisible()
+    expect(screen.getByTestId('input-name')).toBeVisible()
   })
 })

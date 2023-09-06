@@ -39,6 +39,6 @@ describe('Last registered component without data', () => {
   ])
 
   it('should show the message "Você ainda não cadastrou um item"', () => {
-    expect(screen.getByText('Você ainda não cadastrou um item')).toBeInTheDocument()
+    expect(screen.getByText('Nenhum cadastro ainda')).toBeInTheDocument()
   })
 })

@@ -1,13 +1,13 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 export const useLocalStorage = (key: string, initial: string): [string, React.Dispatch<React.SetStateAction<string>>] => {
-  const [state, setState] = React.useState(() => {
+  const [state, setState] = useState(() => {
     const local = window.localStorage.getItem(key)
 
     return local ? local : initial
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.localStorage.setItem(key, state)
   }, [state, key])
 

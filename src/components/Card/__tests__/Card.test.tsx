@@ -11,13 +11,15 @@ describe('Card component with data', () => {
   it('should show picpay and samsung card', () => {
     const carousel = screen.getByTestId('carousel')
 
-    expect(carousel.children).toHaveLength(2)
+    expect(carousel.children).toHaveLength(3)
+    expect(screen.getByText('Nubank')).toBeInTheDocument()
     expect(screen.getByText('Picpay')).toBeInTheDocument()
     expect(screen.getByText('Samsung')).toBeInTheDocument()
   })
 
   it('should show card balance statements', () => {
-    expect(screen.getByText('R$ 2.125,10')).toBeInTheDocument()
+    expect(screen.getByText('R$ 125,10')).toBeInTheDocument()
+    expect(screen.getByText('R$ 2.000,00')).toBeInTheDocument()
     expect(screen.getByText('R$ 2.500,00')).toBeInTheDocument()
   })
 })

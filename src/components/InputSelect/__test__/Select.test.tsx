@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
 import { Select } from "../Select"
+import { DataByFilterContextProvider } from '../../../Context/DataByFilters'
 
 const months = [
   'Janeiro',
@@ -19,7 +20,7 @@ const months = [
 
 describe('Select component', () => {
   beforeEach(() => {
-    render(<Select />)
+    render(<DataByFilterContextProvider><Select /></DataByFilterContextProvider>)
   })
 
   it('should render with the current month and year', () => {
@@ -34,7 +35,7 @@ describe('Select component', () => {
     const currentYear = new Date().getFullYear()
 
     expect(screen.getByText(currentYear - 2)).toBeVisible()
-    expect(screen.getByText(currentYear + 9)).toBeVisible()
+    expect(screen.getByText(currentYear + 8)).toBeVisible()
     expect(() => screen.getByText(currentYear - 3)).toThrow('Unable to find an element');
     expect(() => screen.getByText(currentYear + 10)).toThrow('Unable to find an element');
   })

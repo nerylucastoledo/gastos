@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useFecth } from "../hooks/useFecth"
 import { monthsAndYears } from "../utils/utils";
 
@@ -50,10 +50,10 @@ interface IDataByFilterContext {
   setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DataContext = React.createContext<IDataByFilterContext | null>(null)
+const DataContext = createContext<IDataByFilterContext | null>(null)
 
 export const useDataByFilter = () => {
-  const context = React.useContext(DataContext)
+  const context = useContext(DataContext)
   if (!context) throw new Error("useDataByFilter deve estar em DataContextProvider")
   return context
 }
