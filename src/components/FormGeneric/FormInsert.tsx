@@ -4,6 +4,7 @@ import { Input } from '../input/Input'
 import { Popup } from '../Popup/Popup'
 import { ShowPopup } from '../../utils/utils'
 import { sendData } from '../../utils/SendDataApi'
+import { useDataByFilter } from '../../Context/DataByFilters'
 
 interface IProps {
   nameInput: string;
@@ -16,6 +17,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
   const [errorCategory, setErrorCategory] = useState(false)
   const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
   const username = window.localStorage.getItem('username')
+  const { setUpdate } = useDataByFilter()
 
   const insert = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -33,7 +35,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
     const response = sendData(`http://localhost:8080/${url}`, { ...config })
     response.then((res) => {
       if (res.ok) {
-        notification({ message: `Ihuul! ${name} foi cadastrado(a). o/`, background: 'green' })
+        setUpdate(true)
         return
       }
 

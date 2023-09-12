@@ -197,7 +197,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
 
       <h2 className={styles['title']}>{title}</h2>
       <div data-testid='profile' className={styles['profile']}>
-        {data ? data.map((item) => (
+        {data?.length ? data.map((item) => (
           <div className={styles['profile-item']} key={`${item.name} - ${item.id}`}>
             <p>{item.name}</p>
 
@@ -213,7 +213,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
               alt="Icon deletar" 
             />
           </div>
-        )) : <p>OLa</p>}
+        )) : <i>Nada cadastrado</i>}
       </div>
     </div>
   )

@@ -1,0 +1,42 @@
+.content {
+  background-color: var(--color-7);
+  padding: 32px 16px;
+  height: max-content;
+  height: calc(100vh - 100px);
+}
+
+.box-select {
+  display: flex;
+  gap: 16px;
+}
+
+.select {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  background-color: var(--color-4);
+  color: var(--color-7);
+  font-weight: bold;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  margin-bottom: 16px;
+  margin-top: 6px;
+}
+
+.label {
+  color: var(--color-4);
+  font-weight: bold;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.checkbox input {
+  margin-right: 8px;
+  accent-color: var(--color-4);
+}

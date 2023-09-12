@@ -15,6 +15,7 @@ export function useFecth<T>(url: RequestInfo, config?: RequestInit) {
     
     const fetchData = async () => {
       setLoading(true)
+      setError(null)
       setData(null)
       setUpdate(false)
 

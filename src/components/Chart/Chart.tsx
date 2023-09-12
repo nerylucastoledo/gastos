@@ -98,7 +98,7 @@ export const Chart = () => {
   if (!data?.content?.length) {
     return null
   }
-  
+
   data.content.forEach(item => {
     const indexMonth = monthsChart.findIndex(month => item.date.includes(month.name))
     monthsChart[indexMonth].valor += Number(item.value)

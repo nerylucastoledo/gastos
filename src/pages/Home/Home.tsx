@@ -9,13 +9,20 @@ import { LastRegistered } from "../../components/LastRegistered/LastRegistered"
 import { Ranking } from "../../components/Ranking/Ranking"
 import { useDataByFilter } from "../../Context/DataByFilters"
 import { transformValueInReal } from "../../utils/utils"
+import { useEffect } from "react"
 
 export const Home = () => {
-  const { data, loading, error } = useDataByFilter()
+  const { data, loading, error, setUpdate } = useDataByFilter()
 
   const valueToPay = data?.content.reduce((acc, item) => {
     return item.people === 'Eu' ? Number(acc) + Number(item.value) : acc
   }, 0)
+
+  useEffect(() => {
+    if (data === null && error?.includes('400')) {
+      setUpdate(true)
+    }
+  }, [])
 
   if (data === null) return null
   return (
@@ -57,8 +64,8 @@ export const Home = () => {
               </>
             ) : (
               <>
-                <div style={{ padding: '32px' }}>
-                  <p style={{ textAlign: 'center' }}>Boooa! <br /> Você ainda não tem nenhum gasto para esse mês \o/</p>
+                <div style={{ padding: '32px', width: '100%', textAlign: 'center' }}>
+                  <i>Boooa! <br /> Você ainda não tem nenhum gasto para esse mês \o/</i>
                 </div>
               </>
             )}

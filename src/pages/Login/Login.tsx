@@ -37,7 +37,7 @@ export const Login = () => {
         if (json.username && json.id) {
           window.localStorage.setItem('username', json.username)
           window.localStorage.setItem('id', json.id)
-          return navigate('/')
+          return navigate('/', { state: { username: json.username }})
         }
         if (json.status === 401) throw new Error(json.message)
         if (!res.ok) throw new Error("Ocorreu um erro interno!")

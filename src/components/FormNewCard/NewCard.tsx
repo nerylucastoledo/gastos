@@ -4,6 +4,7 @@ import { Button } from "../Button/Button"
 import { sendData } from "../../utils/SendDataApi"
 import { Popup } from "../Popup/Popup"
 import { ShowPopup } from "../../utils/utils"
+import { useDataByFilter } from "../../Context/DataByFilters"
 
 export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const [name, setName] = useState('')
@@ -11,6 +12,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
   const [errorName, setErrorName] = useState(false)
   const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
   const username = window.localStorage.getItem('username')
+  const { setUpdate } = useDataByFilter()
 
   const insert = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -28,7 +30,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
     const response = sendData('http://localhost:8080/card', { ...config })
     response.then((res) => {
       if (res.ok) {
-        notification({ message: `Ihuul! O cartão ${name} foi cadastrado. o/`, background: 'green' })
+        setUpdate(true)
         return
       }
 
