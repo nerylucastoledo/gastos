@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { FormInsert } from "../FormInsert"
+import { DataByFilterContextProvider } from '../../../Context/DataByFilters'
 
 const setIsModalOpen = jest.fn()
 jest.mock("../../../utils/SendDataApi", () => ({
@@ -9,7 +10,11 @@ jest.mock("../../../utils/SendDataApi", () => ({
 
 describe('New category component', () => {
   beforeEach(() => {
-    render(<FormInsert url='category' nameInput='categoria' setIsModalOpen={setIsModalOpen}/>)
+    render(
+      <DataByFilterContextProvider>
+        <FormInsert url='category' nameInput='categoria' setIsModalOpen={setIsModalOpen}/>
+      </DataByFilterContextProvider>
+    )
   })
 
   it('should render with 1 input and 1 button on the screen', () => {
@@ -56,7 +61,11 @@ describe('New category component', () => {
 
 describe('New people component', () => {
   beforeEach(() => {
-    render(<FormInsert url='people' nameInput='pessoa' setIsModalOpen={setIsModalOpen}/>)
+    render(
+      <DataByFilterContextProvider>
+        <FormInsert url='people' nameInput='pessoa' setIsModalOpen={setIsModalOpen}/>
+      </DataByFilterContextProvider>
+    )
   })
 
   it('should render with 1 input and 1 button on the screen', () => {

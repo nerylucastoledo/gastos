@@ -7,7 +7,7 @@ import IconEdit from '../../assets/img/edit.png'
 
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
-import { Input } from '../input/Input';
+import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
 import { sendData } from '../../utils/SendDataApi';
 import { Popup } from '../Popup/Popup';

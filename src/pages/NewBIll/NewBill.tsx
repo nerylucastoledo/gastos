@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '../../components/Button/Button'
-import { Input } from '../../components/input/Input'
+import { Input } from '../../components/Input/Input'
 import styles from './NewBill.module.css'
 import { useDataByFilter } from '../../Context/DataByFilters'
 import { Header } from '../../components/Header/Header'
@@ -148,6 +148,7 @@ export const NewBill = () => {
                 className={styles['select']} 
                 defaultValue={currentMonth} 
                 onChange={({target}) => setMonth(target.value)}
+                data-testid="month-selected"
               >
                 {months.map(uniqueMonth => (
                   <option key={uniqueMonth} value={uniqueMonth}>{uniqueMonth}</option>
@@ -158,6 +159,7 @@ export const NewBill = () => {
                 className={styles['select']} 
                 defaultValue={currentYear} 
                 onChange={({target}) => setYear(target.value)}
+                data-testid="year-selected"
               >
                 {years.reverse().map(uniqueYear => (
                   <option key={uniqueYear} value={uniqueYear}>{uniqueYear}</option>
@@ -174,6 +176,7 @@ export const NewBill = () => {
                 placeholder='Nome do item'
                 value={nameItem}
                 onChange={({ currentTarget }) => setNameItem(currentTarget.value)}
+                data-testid="item-input"
               />
               {errorFields.includes('item') && <p className="error-input ">Preencha o nome</p>}
             </div>
@@ -186,9 +189,10 @@ export const NewBill = () => {
                 onChange={({target}) => setCardSelect(target.value)}
                 name='card'
                 style={{ border: errorFields.includes('card') ? '1px solid red' : 'unset' }}
+                data-testid="card-selected"
               >
                 {data?.cardList.map(card => (
-                  <option key={card.name} value={card.name}>{card.name}</option>
+                  <option key={card.id} value={card.name}>{card.name}</option>
                 ))}
               </select>
             </div>
@@ -200,6 +204,7 @@ export const NewBill = () => {
                 defaultValue={peopleSelected} 
                 onChange={({target}) => setPeopleSelected(target.value)}
                 name='people'
+                data-testid="people-selected"
               >
                 <option value={'Eu'}>{'Eu'}</option>
                 {data?.peopleList.map(people => (
@@ -216,9 +221,10 @@ export const NewBill = () => {
                 onChange={({target}) => setCategorySelected(target.value)}
                 name='category'
                 style={{ border: errorFields.includes('category') ? '1px solid red' : 'unset' }}
+                data-testid="category-selected"
               >
                 {data?.categoryList.map(category => (
-                  <option key={category.name} value={category.name}>{category.name}</option>
+                  <option key={category.id} value={category.name}>{category.name}</option>
                 ))}
               </select>
             </div>
@@ -233,6 +239,7 @@ export const NewBill = () => {
                 placeholder='Digite o valor'
                 value={value}
                 onChange={({ currentTarget }) => setValue(currentTarget.value)}
+                data-testid="value-input"
               />
               {errorFields.includes('value') && <p className="error-input ">Preencha o valor</p>}
             </div>
@@ -244,6 +251,7 @@ export const NewBill = () => {
                 id="installment" 
                 onChange={() => setCheckbox(!checkbox)} 
                 checked={checkbox} 
+                data-testid="checkbox-installment"
               />
               Tem parcela?
             </label>
@@ -259,6 +267,7 @@ export const NewBill = () => {
                   placeholder='Digite a quantidade'
                   value={installment}
                   onChange={({ currentTarget }) => setInstallment(currentTarget.value)}
+                  data-testid="installment-input"
                 />
                 {errorFields.includes('installment') && <p className="error-input ">Parcela deve ser maior que 1</p>}
               </div>

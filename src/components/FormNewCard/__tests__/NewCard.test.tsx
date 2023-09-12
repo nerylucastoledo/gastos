@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { NewCard } from "../NewCard"
+import { DataByFilterContextProvider } from '../../../Context/DataByFilters'
 
 const setIsModalOpen = jest.fn()
 jest.mock("../../../utils/SendDataApi", () => ({
@@ -9,7 +10,11 @@ jest.mock("../../../utils/SendDataApi", () => ({
 
 describe('New card component', () => {
   beforeEach(() => {
-    render(<NewCard setIsModalOpen={setIsModalOpen}/>)
+    render(
+      <DataByFilterContextProvider>
+        <NewCard setIsModalOpen={setIsModalOpen}/>
+      </DataByFilterContextProvider>
+    )
   })
 
   it('should render with 2 inputs on the screen', () => {

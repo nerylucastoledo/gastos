@@ -1,7 +1,7 @@
 import { useDataByFilter } from '../../Context/DataByFilters'
 import { Header } from '../../components/Header/Header'
 import { ProfileItem } from '../../components/ProfileItem/ProfileItem'
-import { Input } from '../../components/input/Input'
+import { Input } from '../../components/Input/Input'
 import { Loading } from '../../components/Loading/Loading'
 import { ErrorScreen } from '../../components/ErrorScreen/ErrorScreen'
 import { useEffect, useState } from 'react'
@@ -66,6 +66,7 @@ export const Profile = () => {
                   value={salary} 
                   type='number'
                   onChange={({ currentTarget }) => setSalary(Number(currentTarget.value))}
+                  data-testid="salary"
                 />
               </div>
               {data.salary !== salary && (
@@ -74,6 +75,7 @@ export const Profile = () => {
                   src={UpdateBtn} 
                   alt="Botão de atualizar" 
                   onClick={handle}
+                  data-testd="btn-save"
                 />
               )}
             </div>

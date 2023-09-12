@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Header } from '../Header';
+import { DataByFilterContextProvider } from '../../../Context/DataByFilters';
 
 const navigate = jest.fn()
 
@@ -14,7 +15,11 @@ Storage.prototype.clear = jest.fn()
 
 describe('Componente header', () => {
   beforeEach(() => {
-    render( <Header />)
+    render( 
+      <DataByFilterContextProvider>
+        <Header />
+      </DataByFilterContextProvider>
+    )
   })
 
   it('Nav should be contain button menu', () => {

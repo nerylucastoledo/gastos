@@ -2,7 +2,6 @@ import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YA
 import { useFecth } from '../../hooks/useFecth'
 import { IBill } from '../InputSelect/Select'
 import { useDataByFilter } from '../../Context/DataByFilters'
-import { useEffect, useState } from 'react'
 import styles from './Chart.module.css'
 import { transformValueInReal } from '../../utils/utils'
 
@@ -89,19 +88,14 @@ export const Chart = () => {
     `http://localhost:8080/bill/all?username=${username}&year=${year}`
   )
 
-  const [monthsChart, setMonthsChart] = useState(initialMonthsChart)
-
-  useEffect(() => {
-    setMonthsChart(initialMonthsChart)
-  }, [year])
 
   if (!data?.content?.length) {
     return null
   }
 
   data.content.forEach(item => {
-    const indexMonth = monthsChart.findIndex(month => item.date.includes(month.name))
-    monthsChart[indexMonth].valor += Number(item.value)
+    const indexMonth = initialMonthsChart.findIndex(month => item.date.includes(month.name))
+    initialMonthsChart[indexMonth].valor += Number(item.value)
   })
 
   if (loading) return (
@@ -113,7 +107,7 @@ export const Chart = () => {
   if (!data.content.length || error) return <p>Dados vazio</p>
   return (
     <ResponsiveContainer width={'95%'} height={200} className={styles['chart']}>
-      <LineChart data={monthsChart} margin={{ left: 29, top: 5 }}>
+      <LineChart data={initialMonthsChart} margin={{ left: 29, top: 5 }}>
         <Tooltip content={<CustomTooltip />} />
         <CartesianGrid strokeDasharray="1 1" fill='#eee'/>
         <Line type="monotone" dataKey="valor" stroke="#2d7269" />

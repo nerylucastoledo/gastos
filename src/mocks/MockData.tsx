@@ -214,3 +214,93 @@ export const mockProfileItemPeopleList = [
     "username": "test"
   }
 ]
+
+
+export const mockNewBillDataUseDataByFilter = {
+  data: {
+    "salary": 1000,
+    "name": "Lucas",
+    "content": [
+      {
+        "item": "Item test 1",
+        "value": 100,
+        "card": "Card 1",
+        "people": "Eu",
+        "category": "Category 1",
+        "date": "Setembro2023"
+      },
+      {
+        "item": "Item test 2",
+        "value": 100,
+        "card": "Card 2",
+        "people": "Eu",
+        "category": "Category 2",
+        "date": "Setembro2023"
+      },
+      {
+        "item": "Item test 3",
+        "value": 100,
+        "card": "Card 3",
+        "people": "Eu",
+        "category": "Category 3",
+        "date": "Setembro2023"
+      },
+    ],
+    "cardList": [
+      {
+        "id": 1002,
+        "name": "Card 1",
+        "username": "Teste",
+        "color": "#1c00f0"
+      },
+      {
+        "id": 1003,
+        "name": "Card 2",
+        "username": "Teste",
+        "color": "#c800ff"
+      },
+      {
+        "id": 1004,
+        "name": "Card 3",
+        "username": "Teste",
+        "color": "#245724"
+      },
+    ],
+    "peopleList": [
+      {
+        "id": 702,
+        "name": "People 1",
+        "username": "Teste"
+      },
+      {
+        "id": 703,
+        "name": "People 2",
+        "username": "Teste"
+      },
+      {
+        "id": 704,
+        "name": "People 3",
+        "username": "Teste"
+      },
+    ],
+    "categoryList": [
+      {
+        "id": 752,
+        "name": "Category 1",
+        "username": "Teste"
+      },
+      {
+        "id": 753,
+        "name": "Category 2",
+        "username": "Teste"
+      },
+      {
+        "id": 754,
+        "name": "Category 3",
+        "username": "Teste"
+      },
+    ]
+  },
+  loading: false,
+  error: null
+}

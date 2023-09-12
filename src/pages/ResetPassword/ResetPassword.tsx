@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Logo from '../../assets/img/logo.png'
 import { Button } from '../../components/Button/Button'
-import { Input } from '../../components/input/Input'
+import { Input } from '../../components/Input/Input'
 import styles from './ResetPassword.module.css'
 
 export const ResetPassword = () => {

@@ -3,7 +3,7 @@ import Logo from '../../assets/img/logo.png'
 
 import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button/Button"
-import { Input } from "../../components/input/Input"
+import { Input } from "../../components/Input/Input"
 import { Popup } from "../../components/Popup/Popup"
 import { sendData } from "../../utils/SendDataApi"
 

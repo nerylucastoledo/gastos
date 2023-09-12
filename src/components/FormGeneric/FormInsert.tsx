@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '../Button/Button'
-import { Input } from '../input/Input'
+import { Input } from '../Input/Input'
 import { Popup } from '../Popup/Popup'
 import { ShowPopup } from '../../utils/utils'
 import { sendData } from '../../utils/SendDataApi'
