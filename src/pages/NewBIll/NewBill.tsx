@@ -48,7 +48,6 @@ export const NewBill = () => {
   const [month, setMonth] = useState(currentMonth)
   const [year, setYear] = useState(currentYear)
 
-
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
     setErrorFields([])

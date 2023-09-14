@@ -13,18 +13,14 @@ import { useEffect } from "react"
 
 export const Home = () => {
   const { data, loading, error, setUpdate } = useDataByFilter()
-
   const valueToPay = data?.content.reduce((acc, item) => {
     return item.people === 'Eu' ? Number(acc) + Number(item.value) : acc
   }, 0)
 
   useEffect(() => {
-    if (data === null && error?.includes('400')) {
-      setUpdate(true)
-    }
+    setUpdate(true)
   }, [])
 
-  if (data === null) return null
   return (
     <div>
       <Header />
@@ -34,7 +30,7 @@ export const Home = () => {
       <main className={styles['main']}>
         {!error && loading && <Loading />}
 
-        {!error && !loading && valueToPay !== undefined && (
+        {!error && !loading && valueToPay !== undefined && data && (
           <> 
             <Select />
 

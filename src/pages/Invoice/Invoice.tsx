@@ -141,7 +141,10 @@ export const Invoice = () => {
 
       <main className={`${styles['invoice']}  ${(modalEdit || modalDelete) && styles.active}`} onClick={closeModal}>
         {error && <ErrorScreen color="var(--color-1)" />}
-          <div style={{ backgroundColor: cardColor }} className={styles['invoice-card']}>
+          <div 
+            style={{ backgroundColor: cardColor }} 
+            className={`${styles['invoice-card']} ${styles['animate-up']}`}
+          >
             <h2 className={styles['title']}>{name_card}</h2>
             {!error && loading && <Loading />}
             {!error && !loading && data && invoice && peoples && (

@@ -38,7 +38,16 @@
   margin-bottom: 32px;
 }
 
-.slide-in {
-  transform: translateY(100%);
-  transition: transform 0.5s ease-in-out;
+@keyframes animateUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Adicione esta classe para aplicar a animação */
+.animate-up {
+  animation: animateUp 0.5s ease-in-out;
 }
