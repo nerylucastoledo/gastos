@@ -7,6 +7,7 @@ import { Profile } from "./pages/Profile/Profile";
 import { DataByFilterContextProvider } from "./Context/DataByFilters";
 import ProtectedRoute from "./utils/PrivateRoute";
 import { NewBill } from "./pages/NewBIll/NewBill";
+import { Invoice } from "./pages/Invoice/Invoice";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
           <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+           }/>
+          <Route path="/invoice/:name_card" element={
+            <ProtectedRoute>
+              <Invoice />
             </ProtectedRoute>
            }/>
           <Route path="/new-bill" element={

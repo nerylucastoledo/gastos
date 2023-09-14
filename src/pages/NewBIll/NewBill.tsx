@@ -34,7 +34,7 @@ interface IBody {
 export const NewBill = () => {
   const navigate = useNavigate()
   const { months, currentMonth, years, currentYear } = monthsAndYears()
-  const { data, loading, error } = useDataByFilter()
+  const { data, loading, error, setUpdate } = useDataByFilter()
 
   const [nameItem, setNameItem] = useState('')
   const [cardSelected, setCardSelect] = useState(data?.cardList.length ? data?.cardList[0].name : '')
@@ -122,7 +122,10 @@ export const NewBill = () => {
   
     const response = sendData(url, { ...config })
     response.then(async (res) => {
-      if (res.ok) return navigate('/')
+      if (res.ok) {
+        setUpdate(true)
+        navigate('/')
+      }
       throw new Error('Ocorreu um erro interno, tente novamente mais tarde')
     })
     .catch(({ message }) => {

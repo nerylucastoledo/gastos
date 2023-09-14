@@ -39,6 +39,17 @@ body {
   margin-top: 2px;
 }
 
+.text-delete {
+  text-align: center;
+  color: var(--color-7);
+  margin-bottom: 32px;
+}
+
+.btn-delete {
+  display: flex;
+  justify-content: space-between;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

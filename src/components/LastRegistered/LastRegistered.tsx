@@ -20,7 +20,7 @@ export const LastRegistered = ({ data }: { data: IDataByFilter }) => {
           </div>
         ))
       ) : (
-        <p style={{ textAlign: 'center', color: 'var(--color-7)'}}>Nenhum cadastro ainda</p>
+        <p style={{ textAlign: 'center', color: 'var(--color-7)' }}>Nenhum cadastro ainda</p>
       )}
     </div>
   )

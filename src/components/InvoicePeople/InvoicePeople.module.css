@@ -1,0 +1,28 @@
+.people-content {
+  max-width: 130px;
+  padding:  0 16px;
+  border-radius: 16px;
+  flex: 1;
+}
+
+.people-content-item {
+  padding: 12px 8px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  text-align: center;
+  background-color: var(--color-7);
+  color: var(--color-1);
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.people-content-item:last-child {
+  margin-bottom: 0px;
+}
+
+.active {
+  color: var(--color-7);
+  background-color: var(--color-2);
+}

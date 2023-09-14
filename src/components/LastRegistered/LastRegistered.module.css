@@ -10,17 +10,15 @@
 
 .last-registred-content {
   background-color: var(--color-7);
-  padding: 16px;
   margin-bottom: 8px;
+  padding: 16px;
   border-radius: 32px;
 }
 
-.last-registred-content .box {
-  display: flex;
-  justify-content: space-between;
+.last-registred-content p:first-child {
+  margin-bottom: 12px;
 }
 
 .item {
-  text-align: center;
-  margin-top: 16px;
+  margin-top: 12px;
 }

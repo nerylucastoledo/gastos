@@ -14,7 +14,7 @@ interface IProps {
 
 export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
   const [name, setName] = useState('')
-  const [errorCategory, setErrorCategory] = useState(false)
+  const [error, setError] = useState(false)
   const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
   const username = window.localStorage.getItem('username')
   const { setUpdate } = useDataByFilter()
@@ -22,7 +22,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
   const insert = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (!name.length) return setErrorCategory(true)
+    if (!name.length) return setError(true)
 
     const config = {
       method: 'POST',
@@ -65,10 +65,10 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
           data-testid='input-name'
           value={name}
           onChange={({ currentTarget }) => setName(currentTarget.value)}
-          style={{ width: '100%', marginTop: '6px', border: errorCategory ? '1px solid red' : 'unset' }}
+          style={{ width: '100%', marginTop: '6px', border: error ? '1px solid red' : 'unset' }}
           styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
         />
-        {errorCategory && <p className="error-input">Nome da {nameInput} não pode ser vazia</p>}
+        {error && <p className="error-input">Nome da {nameInput} não pode ser vazia</p>}
       </div>
 
       <Button typeBtn='principal' id="criar" style={{ marginTop: '32px', width: '100%' }}>Inserir</Button>

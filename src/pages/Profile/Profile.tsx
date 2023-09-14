@@ -44,14 +44,14 @@ export const Profile = () => {
     })
   }
 
-  if (data === null) return null
+  if (data === null && !loading && !error) return null
   return (
     <>
       <Header />
       <div className={styles['content-profile']}>
         {error && <ErrorScreen />}
         {!error && loading && <Loading />}
-        {!error && !loading && (
+        {!error && !loading && data && (
           <>
             {showPopup ? <Popup background={'red'}>Ocorreu um erro interno, tente novamente mais tarde!</Popup> : null}
             

@@ -1,15 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useFecth } from "../hooks/useFecth"
 import { monthsAndYears } from "../utils/utils";
-
-interface Content {
-  item: string;
-  value: number;
-  description: string;
-  card: string;
-  people: string;
-  category: string;
-}
+import { IBill } from "../components/InputSelect/Select";
 
 export interface CardList {
   id: number;
@@ -33,7 +25,7 @@ export interface CategoryList {
 export interface IDataByFilter {
   salary: number;
   name: string;
-  content: Content[];
+  content: IBill[];
   cardList: CardList[];
   peopleList: PeopleList[];
   categoryList: CategoryList[];

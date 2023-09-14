@@ -185,14 +185,15 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
         <>
           <Modal>
             {showPopup ? <Popup background={'red'}>Ocorreu um erro interno!</Popup> : null}
-            <p data-testid="information-message" className={styles['text-delete']}>
+            <p data-testid="information-message" className='text-delete'>
               Todos os dados com esse nome serão deletados. <br></br> Tem certeza que quer deletar o(a) <b>{itemSelected?.name}</b>?
             </p>
-            <div className={styles['btn-delete']}>
+            <div className='btn-delete'>
               <Button typeBtn='accepted' onClick={() => handleSubmit()}>Sim</Button>
               <Button typeBtn='refused' onClick={() => setIsModalOpenDelete(false)}>Não</Button>
             </div>
-        </Modal></>
+          </Modal>
+        </>
       )}
 
       <h2 className={styles['title']}>{title}</h2>

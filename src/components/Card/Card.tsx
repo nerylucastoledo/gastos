@@ -2,6 +2,7 @@ import styles from './Card.module.css'
 import CardImg from '../../assets/img/card.png'
 import { IDataByFilter } from '../../Context/DataByFilters'
 import { transformValueInReal } from '../../utils/utils';
+import { useNavigate } from 'react-router-dom';
 
 interface IInvoice {
   color_card: string;
@@ -10,6 +11,7 @@ interface IInvoice {
 }
 
 export const Card = ({ data }: { data: IDataByFilter} ) => {
+  const navigate = useNavigate()
   const invoices = getInvoices()
 
   function getInvoices() {
@@ -35,6 +37,10 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
     return invoices
   }
 
+  const handleClickCard = (card: IInvoice) => {
+    navigate(`/invoice/${card.name_card}`)
+  }
+
   function getCardsOfDateSelected() {
     const cards = new Set()
     data.content.forEach((transaction) => cards.add(transaction.card))
@@ -46,6 +52,7 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
       <div data-testid="carousel" className={styles['carousel']} style={{ marginRight: invoices.length > 1 ? '0' : '16px' }}>
         {invoices.length ? invoices.map(card => (
           <div 
+            onClick={() => handleClickCard(card)}
             key={card.name_card} 
             style={{ backgroundColor: card.color_card, flex: invoices.length > 1 ? '0 0 85%' : '0 0 100%' }} 
             className={styles['card']}

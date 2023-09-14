@@ -36,14 +36,3 @@
   left: 0px;
   z-index: 1;
 }
-
-.btn-delete {
-  display: flex;
-  justify-content: space-between;
-}
-
-.text-delete {
-  text-align: center;
-  margin-bottom: 32px;
-  color: var(--color-7);
-}

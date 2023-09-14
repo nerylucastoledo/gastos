@@ -3,6 +3,7 @@ import { useDataByFilter } from '../../Context/DataByFilters';
 import { monthsAndYears } from '../../utils/utils';
 
 export interface IBill {
+  id: number;
   item: string;
   value: number;
   description: string;
