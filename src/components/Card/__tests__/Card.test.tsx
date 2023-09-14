@@ -3,6 +3,13 @@ import { render, screen } from '@testing-library/react'
 import { Card } from '../Card'
 import { mockDataProps, mockWhithoutDataProps } from '../../../mocks/MockData'
 
+const navigate = jest.fn()
+
+jest.mock('react-router-dom', () => ({
+  useNavigate: () => navigate
+}))
+
+
 describe('Card component with data', () => {
   beforeEach(() => {
     render(<Card data={mockDataProps}/> )

@@ -3,6 +3,8 @@ export const mockDataProps = {
   "name": "Lucas",
   "content": [
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item 1",
       "value": 125.1,
       "description": "Teste de descrição",
@@ -11,6 +13,8 @@ export const mockDataProps = {
       "category": "Teste de categoria"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item 2",
       "value": 2000,
       "description": "Teste de descrição",
@@ -19,6 +23,8 @@ export const mockDataProps = {
       "category": "Teste de categoria"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item 3",
       "value": 2500,
       "description": "Teste de descrição",
@@ -65,6 +71,8 @@ export const mockDataRanking = {
   "name": "Lucas",
   "content": [
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 125.1,
       "description": "Teste de descrição",
@@ -73,6 +81,8 @@ export const mockDataRanking = {
       "category": "Teste de categoria"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 2000,
       "description": "Teste de descrição",
@@ -81,6 +91,8 @@ export const mockDataRanking = {
       "category": "Comida"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 2500,
       "description": "Teste de descrição",
@@ -89,6 +101,8 @@ export const mockDataRanking = {
       "category": "Teste de categoria"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 2500,
       "description": "Teste de descrição",
@@ -97,6 +111,8 @@ export const mockDataRanking = {
       "category": "Comida"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 1000,
       "description": "Teste de descrição",
@@ -105,6 +121,8 @@ export const mockDataRanking = {
       "category": "Carro"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 5000,
       "description": "Teste de descrição",
@@ -113,6 +131,8 @@ export const mockDataRanking = {
       "category": "Shopping"
   },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 5000,
       "description": "Teste de descrição",
@@ -121,6 +141,8 @@ export const mockDataRanking = {
       "category": "Shopping"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 5000,
       "description": "Teste de descrição",
@@ -129,6 +151,8 @@ export const mockDataRanking = {
       "category": "Comida"
     },
     {
+      "id": 1,
+      "date": "Setembro2023",
       "item": "Teste item",
       "value": 5000,
       "description": "Teste de descrição",

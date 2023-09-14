@@ -10,7 +10,6 @@ export const ResetPassword = () => {
 
   const handleSUbmit = () => {
     if (!email.length) setError('email')
-    console.log('ola')
   }
 
   return (
