@@ -76,7 +76,7 @@ export const CreateAccount = () => {
               typeInput="border" 
               value={name}
               onChange={({currentTarget}) => setName(currentTarget.value)}
-              style={{ borderBottomColor: errorFields.includes('name') ? 'red' : 'unset'}}
+              style={{ borderBottomColor: errorFields.includes('name') ? 'var(--color-error)' : 'unset'}}
             />
             {errorFields.includes('name') && <p className="error-input ">Preencha o nome</p>}
           </div>
@@ -91,7 +91,7 @@ export const CreateAccount = () => {
               typeInput="border" 
               value={lastname}
               onChange={({currentTarget}) => setLastName(currentTarget.value)}
-              style={{ borderBottomColor: errorFields.includes('lastname') ? 'red' : 'unset'}}
+              style={{ borderBottomColor: errorFields.includes('lastname') ? 'var(--color-error)' : 'unset'}}
             />
             {errorFields.includes('lastname') && <p className="error-input ">Preencha o sobrenome</p>}
           </div>
@@ -106,7 +106,7 @@ export const CreateAccount = () => {
               typeInput="border" 
               value={salary}
               onChange={({currentTarget}) => setSalary(currentTarget.value)}
-              style={{ borderBottomColor: errorFields.includes('salary') ? 'red' : 'unset'}}
+              style={{ borderBottomColor: errorFields.includes('salary') ? 'var(--color-error)' : 'unset'}}
             />
             {errorFields.includes('salary') && <p className="error-input ">Preencha o salário</p>}
           </div>
@@ -121,7 +121,7 @@ export const CreateAccount = () => {
               typeInput="border"
               value={email}
               onChange={({currentTarget}) => setEmail(currentTarget.value)}
-              style={{ borderBottomColor: errorFields.includes('email') ? 'red' : 'unset'}}
+              style={{ borderBottomColor: errorFields.includes('email') ? 'var(--color-error)' : 'unset'}}
             />
             {errorFields.includes('email') && <p className="error-input ">Email vazio ou já utilizado</p>}
           </div>
@@ -137,7 +137,7 @@ export const CreateAccount = () => {
               value={password}
               autoComplete='on'
               onChange={({currentTarget}) => setPassword(currentTarget.value)}
-              style={{ borderBottomColor: errorFields.includes('password') ? 'red' : 'unset'}}
+              style={{ borderBottomColor: errorFields.includes('password') ? 'var(--color-error)' : 'unset'}}
             />
             {errorFields.includes('password') && <p className="error-input ">Senha deve ter 8 caracteres</p>}
           </div>

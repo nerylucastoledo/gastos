@@ -86,3 +86,16 @@
   transform: translate(-50%, -50%);
   font-weight: bold;
 }
+
+@keyframes animateUp {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-right {
+  animation: animateUp 0.5s ease-in-out;
+}

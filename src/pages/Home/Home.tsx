@@ -28,10 +28,10 @@ export const Home = () => {
       {error !== null && <ErrorScreen />}
 
       <main className={styles['main']}>
-        {!error && loading && <Loading />}
+        {!error && loading && <div className={styles['home-loading']}><Loading /></div>}
 
         {!error && !loading && valueToPay !== undefined && data && (
-          <> 
+          <div className={styles['animate-right']}> 
             <Select />
 
             <div className={styles['box-values']}>
@@ -65,7 +65,7 @@ export const Home = () => {
                 </div>
               </>
             )}
-          </>
+          </div>
         )}
       </main>
     </div>

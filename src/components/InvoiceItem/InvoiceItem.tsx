@@ -24,7 +24,7 @@ export const InvoiceItem = ({ invoice, setModalEdit, setModalDelete, setActiveTo
   }
 
   return (
-    <div className={styles['content']}>
+    <div className={`${styles['content']} ${styles['animate-right']}`}>
       {invoice.length ? invoice.map((item, index) => (
         <div key={`${item.item} - ${index + 1}`} className={styles['content-item']}>
           <div className={styles['content-item-icon']}>

@@ -47,7 +47,6 @@
   }
 }
 
-/* Adicione esta classe para aplicar a animação */
 .animate-up {
   animation: animateUp 0.5s ease-in-out;
 }

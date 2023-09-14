@@ -70,7 +70,7 @@ export const Login = () => {
               typeInput="border"
               value={email}
               onChange={({currentTarget}) => setEmail(currentTarget.value)}
-              style={{ borderBottomColor: errorFields.includes('email') ? 'red' : 'unset'}}
+              style={{ borderBottomColor: errorFields.includes('email') ? 'var(--color-error)' : 'unset'}}
             />
             {errorFields.includes('email') && <p className="error-input ">Email não pode ser vazio</p>}
           </div>
@@ -86,7 +86,7 @@ export const Login = () => {
               value={password}
               autoComplete='on'
               onChange={({currentTarget}) => setPassword(currentTarget.value)}
-              style={{ borderBottomColor: errorFields.includes('password') ? 'red' : 'unset'}}
+              style={{ borderBottomColor: errorFields.includes('password') ? 'var(--color-error)' : 'unset'}}
             />
             {errorFields.includes('password') && <p className="error-input ">Senha deve ter 8 caracteres</p>}
           </div>

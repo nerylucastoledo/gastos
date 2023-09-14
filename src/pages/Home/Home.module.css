@@ -1,6 +1,13 @@
 .main {
   background-color: var(--color-7);
   padding: 32px 0;
+  display: flex;
+  flex-flow: column;
+  height: max-content;
+}
+
+.home-loading {
+  height: calc(100vh - 200px);
 }
 
 .main h2 {
@@ -37,4 +44,17 @@
 
 .box-values p {
   margin-top: 8px;
+}
+
+@keyframes animateUp {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-right {
+  animation: animateUp 0.5s ease-in-out;
 }
