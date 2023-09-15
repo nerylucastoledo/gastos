@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { Popup } from '../Popup/Popup'
-import { ShowPopup } from '../../utils/utils'
+import { DEFAULT_URL, ShowPopup } from '../../utils/utils'
 import { sendData } from '../../utils/SendDataApi'
 import { useDataByFilter } from '../../Context/DataByFilters'
 
@@ -32,7 +32,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
       },
     }
 
-    const response = sendData(`http://localhost:8080/${url}`, { ...config })
+    const response = sendData(`${DEFAULT_URL}${url}`, { ...config })
     response.then((res) => {
       if (res.ok) {
         setUpdate(true)
@@ -40,7 +40,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
       }
 
       notification({ message: 'Ocorreu um erro interno!', background: 'red' })
-    })
+    }).catch(() => notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' }))
   }
 
   const notification = (props: ShowPopup) => {

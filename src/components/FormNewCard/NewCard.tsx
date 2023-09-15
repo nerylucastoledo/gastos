@@ -3,7 +3,7 @@ import { Input } from "../Input/Input"
 import { Button } from "../Button/Button"
 import { sendData } from "../../utils/SendDataApi"
 import { Popup } from "../Popup/Popup"
-import { ShowPopup } from "../../utils/utils"
+import { DEFAULT_URL, ShowPopup } from "../../utils/utils"
 import { useDataByFilter } from "../../Context/DataByFilters"
 
 export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
@@ -27,7 +27,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
       },
     }
 
-    const response = sendData('http://localhost:8080/card', { ...config })
+    const response = sendData(`${DEFAULT_URL}card`, { ...config })
     response.then((res) => {
       if (res.ok) {
         setUpdate(true)
@@ -35,7 +35,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
       }
 
       notification({ message: 'Ocorreu um erro interno!', background: 'red' })
-    })
+    }).catch(() => notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' }))
   }
 
   const notification = (props: ShowPopup) => {

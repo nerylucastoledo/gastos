@@ -12,7 +12,7 @@ export const InvoicePeople = ({ peoples, setPeopleSelected, peopleSelected }: IP
     <ul className={`${styles['people-content']} ${styles['animate-right']}`}>
       <li 
         onClick={() => setPeopleSelected('Eu')} 
-        className={`${styles['people-content-item']} ${'Eu' === peopleSelected ? styles['active'] : ''}`}
+        className={`${styles['people-content-item']} ${'Eu' === peopleSelected ? `${styles['active']} active` : ''}`}
       >
         Eu
       </li>

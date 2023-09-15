@@ -7,8 +7,9 @@ import { Header } from '../../components/Header/Header'
 import { Loading } from '../../components/Loading/Loading'
 import { sendData } from '../../utils/SendDataApi'
 import { Popup } from '../../components/Popup/Popup'
-import { monthsAndYears } from '../../utils/utils'
+import { DEFAULT_URL, ShowPopup, monthsAndYears } from '../../utils/utils'
 import { useNavigate } from 'react-router-dom'
+import { ErrorScreen } from '../../components/ErrorScreen/ErrorScreen'
 
 const styleInput: React.CSSProperties = {
   marginTop: '6px', 
@@ -45,7 +46,7 @@ export const NewBill = () => {
   const [installment, setInstallment] = useState('')
   const [value, setValue] = useState('')
   const [errorFields, setErrorFields] = useState<string[]>([])
-  const [errorApi, setErrorApi] = useState('')
+  const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
   const [month, setMonth] = useState(currentMonth)
   const [year, setYear] = useState(currentYear)
 
@@ -59,7 +60,7 @@ export const NewBill = () => {
     if (!value.length) setErrorFields((previous) => [...previous, 'value'])
     if (checkbox && Number(installment) <= 1) setErrorFields((previous) => [...previous, 'installment'])
 
-    const url = `http://localhost:8080/bill${checkbox && Number(installment) > 1 ? '/list' : ''}`
+    const url = `${DEFAULT_URL}bill${checkbox && Number(installment) > 1 ? '/list' : ''}`
     
     if (nameItem && value) {
       const body: IBody | IBody[] = createBody(Number(installment))
@@ -128,19 +129,23 @@ export const NewBill = () => {
         setUpdate(true)
         navigate('/')
       }
-      throw new Error('Ocorreu um erro interno, tente novamente mais tarde')
-    })
-    .catch(({ message }) => {
-      setErrorApi(message)
-      setTimeout(() => setErrorApi(''), 2000)
-    })
+
+      notification({ message: 'Ocorreu um erro interno!', background: 'red' })
+    }).catch(() => notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' }))
+  }
+
+  const notification = (props: ShowPopup) => {
+    setShowPopup(props)
+
+    setTimeout(() => setShowPopup(null), 2500)
   }
 
   return (
     <>
       <Header />
 
-      {errorApi.length ? <Popup background={'red'}>{errorApi}</Popup> : null}
+      {error && <ErrorScreen />}
+      {showPopup ? <Popup background={showPopup.background}>{showPopup.message}</Popup> : null}
 
       {!error && loading && <Loading />}
 
@@ -197,7 +202,7 @@ export const NewBill = () => {
                 maxLength={80}
                 value={description}
                 onChange={({ currentTarget }) => setDescription(currentTarget.value)}
-                data-testid="item-input"
+                data-testid="description-input"
               />
             </div>
 

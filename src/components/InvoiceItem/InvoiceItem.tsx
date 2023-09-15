@@ -35,20 +35,20 @@ export const InvoiceItem = ({ invoice, setModalEdit, setModalDelete, setActiveTo
                     <p>{item.description}</p>
                   </div>
                 )}
-                <img onClick={() => handleClickInfo(index)} src={Info} alt="Icon info" />
+                <img data-testid={`icon-tooltip-${index + 1}`} onClick={() => handleClickInfo(index)} src={Info} alt="Icon info" />
               </>
             )}
-            <img onClick={() => setModalEdit(item)} src={Edit} alt="Icon edit" />
-            <img onClick={() => setModalDelete(item)} src={Delete} alt="Icon delete" />
+            <img data-testid={`icon-edit-${index + 1}`} onClick={() => setModalEdit(item)} src={Edit} alt="Icon edit" />
+            <img data-testid={`icon-delete-${index + 1}`} onClick={() => setModalDelete(item)} src={Delete} alt="Icon delete" />
           </div>
           <div className={styles['content-item-values']}>
-            <p className={styles['content-item-values-title']}>{item.item}</p>
-            <p style={{ display: 'block' }}>{transformValueInReal(item.value)}</p>
+            <p data-testid="text-item" className={styles['content-item-values-title']}>{item.item}</p>
+            <p data-testid="text-value" style={{ display: 'block' }}>{transformValueInReal(item.value)}</p>
           </div>
         </div>
       )) : (
         <div className={styles['not-found']}>
-          <p>Nenhum gasto \o/</p>
+          <p data-testid="not-found">Nenhum gasto \o/</p>
         </div>
       )}
     </div>

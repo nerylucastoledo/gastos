@@ -2,6 +2,7 @@ import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Header } from '../Header';
 import { DataByFilterContextProvider } from '../../../Context/DataByFilters';
+import { ThemeContextProvider } from '../../../Context/ThemeContext';
 
 const navigate = jest.fn()
 
@@ -17,7 +18,9 @@ describe('Componente header', () => {
   beforeEach(() => {
     render( 
       <DataByFilterContextProvider>
-        <Header />
+        <ThemeContextProvider>
+          <Header />
+        </ThemeContextProvider>
       </DataByFilterContextProvider>
     )
   })

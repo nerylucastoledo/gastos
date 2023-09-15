@@ -10,6 +10,7 @@ import UpdateBtn from '../../assets/img/update.png'
 import styles from './Profile.module.css'
 import { sendData } from '../../utils/SendDataApi'
 import { Popup } from '../../components/Popup/Popup'
+import { DEFAULT_URL } from '../../utils/utils'
 
 export const Profile = () => {
   const { data, loading, error, setUpdate } = useDataByFilter()
@@ -35,7 +36,7 @@ export const Profile = () => {
       },
     }
 
-    const response = sendData(`http://localhost:8080/user/${idUser}`, { ...config })
+    const response = sendData(`${DEFAULT_URL}user/${idUser}`, { ...config })
     response.then((res) => {
       if (res.ok) return setUpdate(true)
 

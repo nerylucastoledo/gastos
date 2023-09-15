@@ -4,6 +4,7 @@ import { DataByFilterContextProvider } from "../../../Context/DataByFilters"
 import { mockNewBillDataUseDataByFilter } from '../../../mocks/MockData'
 import { Profile } from '../Profile'
 import { act } from 'react-dom/test-utils'
+import { ThemeContextProvider } from '../../../Context/ThemeContext'
 
 const navigate = jest.fn()
 
@@ -19,7 +20,9 @@ describe('New bill component with data', () => {
   beforeEach(() => {
     render(
       <DataByFilterContextProvider>
-        <Profile />
+        <ThemeContextProvider>
+          <Profile />
+        </ThemeContextProvider>
       </DataByFilterContextProvider>
     )
   })
@@ -77,7 +80,7 @@ describe('New bill component with data', () => {
     await waitFor(() => {
       expect(screen.getByTestId('information-message')).toBeInTheDocument()
       expect(screen.getByTestId('information-message').innerHTML)
-      .toEqual('Todos os dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>Category 1</b>?')
+      .toEqual('Dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>Category 1</b>?')
     })
   })
 

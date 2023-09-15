@@ -8,10 +8,10 @@
 }
 
 .custom {
-  background-color: var(--color-6);
+  background-color: #F5F5F5;
   padding: 6px;
   border-radius: 16px;
-  color: var(--color-7);
+  color: #333333;
 }
 
 .chart {

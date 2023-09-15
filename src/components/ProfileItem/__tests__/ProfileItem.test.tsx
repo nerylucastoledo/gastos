@@ -56,7 +56,7 @@ describe('Profile item component with data', () => {
       await waitFor(() => {
         expect(screen.getByTestId('information-message')).toBeInTheDocument()
         expect(screen.getByTestId('information-message').innerHTML)
-        .toEqual('Todos os dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>Cartao 1</b>?')
+        .toEqual('Dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>Cartao 1</b>?')
       })
     })
   })
@@ -108,7 +108,7 @@ describe('Profile item component with data', () => {
       await waitFor(() => {
         expect(screen.getByTestId('information-message')).toBeInTheDocument()
         expect(screen.getByTestId('information-message').innerHTML)
-        .toEqual('Todos os dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>Category 1</b>?')
+        .toEqual('Dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>Category 1</b>?')
       })
     })
   })
@@ -150,7 +150,7 @@ describe('Profile item component with data', () => {
       })
     })
 
-    it('should open the delete modal when clicking edit anyone', async () => {
+    it('should open the delete modal when clicking delete anyone', async () => {
       const itemDeleteOne = screen.getAllByAltText('Icon deletar')[0]
       
       act(() => {
@@ -160,7 +160,7 @@ describe('Profile item component with data', () => {
       await waitFor(() => {
         expect(screen.getByTestId('information-message')).toBeInTheDocument()
         expect(screen.getByTestId('information-message').innerHTML)
-        .toEqual('Todos os dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>People 1</b>?')
+        .toEqual('Dados com esse nome serão deletados. <br> Tem certeza que quer deletar o(a) <b>People 1</b>?')
       })
     })
   })

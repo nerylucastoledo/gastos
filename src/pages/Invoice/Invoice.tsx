@@ -15,6 +15,7 @@ import { Popup } from "../../components/Popup/Popup";
 import { Input } from "../../components/Input/Input";
 import { sendData } from "../../utils/SendDataApi";
 import { Arrowback } from '../../assets/arrowback'
+import { DEFAULT_URL } from "../../utils/utils";
 
 interface IContent {
   content: IBill[]
@@ -38,7 +39,7 @@ export const Invoice = () => {
   const [value, setValue] = useState('')
 
   const { data, loading, error, setUpdate } = useFecth<IContent>(
-    `http://localhost:8080/bill/by-card?username=${username}&date=${month+year}&card=${name_card}`
+    `${DEFAULT_URL}bill/by-card?username=${username}&date=${month+year}&card=${name_card}`
   )
   const content = useDataByFilter()
 
@@ -94,7 +95,7 @@ export const Invoice = () => {
         },
       }
 
-      const response = sendData(`http://localhost:8080/bill/${modalEdit?.id}`, { ...config })
+      const response = sendData(`${DEFAULT_URL}bill/${modalEdit?.id}`, { ...config })
       response.then((res) => {
         if (res.ok) {
           setUpdate(true)
@@ -110,7 +111,7 @@ export const Invoice = () => {
 
   const deleteItem = () => {
     if (modalDelete !== true && modalDelete !== false) {
-      const response = sendData(`http://localhost:8080/bill/${modalDelete?.id}`, { method: 'DELETE' })
+      const response = sendData(`${DEFAULT_URL}bill/${modalDelete?.id}`, { method: 'DELETE' })
       response.then((res) => {
         if (res.ok) {
           setUpdate(true)

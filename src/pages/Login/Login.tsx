@@ -6,6 +6,7 @@ import { Button } from "../../components/Button/Button"
 import { Input } from "../../components/Input/Input"
 import { Popup } from "../../components/Popup/Popup"
 import { sendData } from "../../utils/SendDataApi"
+import { DEFAULT_URL } from "../../utils/utils"
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -31,7 +32,7 @@ export const Login = () => {
         },
       }
 
-      const response = sendData('http://localhost:8080/user/login', { ...config })
+      const response = sendData(`${DEFAULT_URL}login`, { ...config })
       response.then(async (res) => {
         const json = await res.json().then(json => json)
         if (json.username && json.id) {

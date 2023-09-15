@@ -3,7 +3,7 @@ import { useFecth } from '../../hooks/useFecth'
 import { IBill } from '../InputSelect/Select'
 import { useDataByFilter } from '../../Context/DataByFilters'
 import styles from './Chart.module.css'
-import { transformValueInReal } from '../../utils/utils'
+import { DEFAULT_URL, transformValueInReal } from '../../utils/utils'
 
 interface IData {
   content: IBill[]
@@ -85,7 +85,7 @@ export const Chart = () => {
   const username = window.localStorage.getItem('username')
   const { year } = useDataByFilter()
   const { data, loading, error} = useFecth<IData>(
-    `http://localhost:8080/bill/all?username=${username}&year=${year}`
+    `${DEFAULT_URL}bill/all?username=${username}&year=${year}`
   )
 
 
@@ -110,10 +110,11 @@ export const Chart = () => {
       <LineChart data={initialMonthsChart} margin={{ left: 29, top: 5 }}>
         <Tooltip content={<CustomTooltip />} />
         <CartesianGrid strokeDasharray="1 1" fill='#eee'/>
-        <Line type="monotone" dataKey="valor" stroke="#2d7269" />
-        <XAxis dataKey="name"/>
+        <Line type="monotone" dataKey="valor" stroke="#2199F3" />
+        <XAxis dataKey="name" stroke='var(--color-9)'/>
         <YAxis 
           dataKey="valor" 
+          stroke='var(--color-9)'
           tickFormatter={(value) =>  transformValueInReal(value)} 
           fontSize={12}
         />

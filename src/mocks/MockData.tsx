@@ -328,3 +328,28 @@ export const mockNewBillDataUseDataByFilter = {
   loading: false,
   error: null
 }
+
+export const mockInvoiceItem = [
+  {
+    "id": 1206,
+    "item": "Testando",
+    "value": 999,
+    "card": "Nubank",
+    "people": "Eu",
+    "category": "Cinema",
+    "date": "Setembro2023",
+    "description": "Teste de descrição"
+  },
+  {
+    "id": 1208,
+    "item": "Teste 3",
+    "value": 100,
+    "card": "Nubank",
+    "people": "Eu",
+    "category": "Cama",
+    "date": "Setembro2023",
+    "description": "Teste de descrição 3"
+  }
+]
+
+export const mockInvoiceItemWithoutDataToEu = []

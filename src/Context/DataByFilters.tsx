@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useFecth } from "../hooks/useFecth"
-import { monthsAndYears } from "../utils/utils";
+import { DEFAULT_URL, monthsAndYears } from "../utils/utils";
 import { IBill } from "../components/InputSelect/Select";
 
 export interface CardList {
@@ -58,7 +58,7 @@ export const DataByFilterContextProvider = ({ children }: React.PropsWithChildre
   const [year, setYear] = useState(currentYear)
 
   const { data, loading, error, setUpdate } = useFecth<IDataByFilter>(
-    `http://localhost:8080/bill?username=${username}&date=${month+year}`
+    `${DEFAULT_URL}bill?username=${username}&date=${month+year}`
   )
 
   return <DataContext.Provider value={{ 
