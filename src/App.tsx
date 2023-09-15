@@ -8,37 +8,43 @@ import { DataByFilterContextProvider } from "./Context/DataByFilters";
 import ProtectedRoute from "./utils/PrivateRoute";
 import { NewBill } from "./pages/NewBIll/NewBill";
 import { Invoice } from "./pages/Invoice/Invoice";
+import { useTheme } from "./Context/ThemeContext";
 
 function App() {
+  const { theme} = useTheme()
+
+
   return (
     <BrowserRouter>
-      <DataByFilterContextProvider>
-        <Routes>
-          <Route path="/" element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/create-account" element={<CreateAccount />}/>
-          <Route path="/reset-password" element={<ResetPassword />}/>
-          <Route path="/profile" element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-           }/>
-          <Route path="/invoice/:name_card" element={
-            <ProtectedRoute>
-              <Invoice />
-            </ProtectedRoute>
-           }/>
-          <Route path="/new-bill" element={
-            <ProtectedRoute>
-              <NewBill />
-            </ProtectedRoute>
-           }/>
-        </Routes>
-      </DataByFilterContextProvider>
+      <div className="app" data-theme={theme}>
+        <DataByFilterContextProvider>
+          <Routes>
+            <Route path="/" element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/create-account" element={<CreateAccount />}/>
+            <Route path="/reset-password" element={<ResetPassword />}/>
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }/>
+            <Route path="/invoice/:name_card" element={
+              <ProtectedRoute>
+                <Invoice />
+              </ProtectedRoute>
+            }/>
+            <Route path="/new-bill" element={
+              <ProtectedRoute>
+                <NewBill />
+              </ProtectedRoute>
+            }/>
+          </Routes>
+        </DataByFilterContextProvider>
+      </div>
     </BrowserRouter>
   )
 }

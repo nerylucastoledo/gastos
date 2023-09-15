@@ -24,7 +24,7 @@ export const Home = () => {
   return (
     <div>
       <Header />
-      
+
       {error !== null && <ErrorScreen />}
 
       <main className={styles['main']}>
@@ -42,7 +42,7 @@ export const Home = () => {
               <div className={styles['line']}></div>
               <div>
                 <h2>Sobrando</h2>
-                <p>{transformValueInReal(Number(data.salary) - valueToPay)}</p>
+                <p style={{ color: Number(data.salary) - valueToPay > 0 ? 'var(--color-positive)' : 'var(--color-error)' }}>{transformValueInReal(Number(data.salary) - valueToPay)}</p>
               </div>
             </div>
 

@@ -50,7 +50,11 @@ export const Profile = () => {
       <Header />
       <div className={styles['content-profile']}>
         {error && <ErrorScreen />}
-        {!error && loading && <Loading />}
+        {!error && loading && (
+          <div className={styles['content-loading']}>
+            <Loading />
+          </div>
+        )}
         {!error && !loading && data && (
           <>
             {showPopup ? <Popup background={'red'}>Ocorreu um erro interno, tente novamente mais tarde!</Popup> : null}
@@ -61,8 +65,7 @@ export const Profile = () => {
                 <Input 
                   label='Seu salário' 
                   typeInput='normal' 
-                  style={{ backgroundColor: 'var(--color-3)', color: 'var(--color-7)' }}
-                  styleLabel={{ fontSize: '18px' }}
+                  styleLabel={{ fontSize: '18px', color: 'var(--color-5)' }}
                   value={salary} 
                   type='number'
                   onChange={({ currentTarget }) => setSalary(Number(currentTarget.value))}

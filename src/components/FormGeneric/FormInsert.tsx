@@ -66,7 +66,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
           value={name}
           onChange={({ currentTarget }) => setName(currentTarget.value)}
           style={{ width: '100%', marginTop: '6px', border: error ? '1px solid red' : 'unset' }}
-          styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+          styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
         />
         {error && <p className="error-input">Nome da {nameInput} não pode ser vazia</p>}
       </div>

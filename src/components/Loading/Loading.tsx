@@ -1,8 +1,8 @@
 import React from 'react'
 
 const style: React.CSSProperties = {
-  border: " 2rem solid var(--color-5)",
-  borderRightColor: "var(--color-7)",
+  border: "2rem solid var(--color-4)",
+  borderRightColor: "var(--color-1)",
   width: "4rem",
   height: "4rem",
   borderRadius: "50%",

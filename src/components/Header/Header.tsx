@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom'
 import { Modal } from '../Modal/Modal'
 import { NewCard } from '../FormNewCard/NewCard'
 import { FormInsert } from '../FormGeneric/FormInsert'
+import { useTheme } from '../../Context/ThemeContext'
 
 export const Header = () => {
   const navigate = useNavigate()
+  const { theme, switchTheme } = useTheme()
 
   const [mobileMenu, setMobileMenu] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -66,6 +68,13 @@ export const Header = () => {
       </nav>
 
       <img onClick={() => navigate('/')} src={Logo} alt="Logo da empresa" />
+
+      <div className={styles['box-logout-theme']}>
+        <label className="switch">
+          <input type="checkbox" checked={theme === 'dark'} onChange={switchTheme}/>
+          <span className="slider round"></span>
+        </label>
+      </div>
 
       <img src={Logout} onClick={handleLogout} alt="Sair" />
 

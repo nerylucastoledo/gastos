@@ -1,7 +1,7 @@
 .invoice {
-  background-color: var(--color-7);
+  background-color: var(--color-1);
   height: calc(100vh - 136px);
-  padding-top: 64px;
+  padding-top: 16px;
 }
 
 .invoice.active:before {
@@ -23,7 +23,7 @@
 
 .title {
   text-align: center;
-  color: var(--color-7);
+  color: #FFFFFF;
   font-size: 32px;
   padding: 16px 48px 0;
 }
@@ -36,6 +36,19 @@
   display: block;
   margin-top: 16px;
   margin-bottom: 32px;
+}
+
+.btn-back {
+  margin-bottom: 16px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-back p {
+  color: var(--color-5);
+  font-size: 24px;
+  margin-left: 2px;
 }
 
 @keyframes animateUp {

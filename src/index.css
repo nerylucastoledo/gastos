@@ -1,5 +1,5 @@
 body {
-  background-color: var(--color-4);
+  background-color: var(--color-1);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -14,21 +14,104 @@ body {
 }
 
 :root {
-  --color-1: #0c1c24;
-  --color-2: #2e4569;
-  --color-3: #004c51;
-  --color-4: #2d7269;
-  --color-5: #7e988d;
-  --color-6: #C7CACB;
-  --color-7: #fff;
+  --color-1: #FFFFFF;
+  --color-2: #F5F5F5;
+  --color-3: #E0E0E0;
+  --color-4: #2199F3;
+  --color-5: #333333;
+  --color-6: #757575;
+  --color-7: #C7CACB;
+  --color-8: #424242;
   --color-accepted: #34AF31;
-  --color-error: #FF0000;
+  --color-error: #FF5722;
+  --color-positive: #4CAF50;
+}
+
+[data-theme='dark'] {
+  --color-1: #1E1E1E;
+  --color-2: #424242;
+  --color-3: #757575;
+  --color-4: #2199F3;
+  --color-5: #FFFFFF;
+  --color-6: #E0E0E0;
+  --color-7: #C7CACB;
+  --color-8: #424242;
+  --color-accepted: #34AF31;
+  --color-error: #FF5722;
+  --color-positive: #4CAF50;
+}
+
+/* SLDIER */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #1E1E1E;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #1E1E1E;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 .paragraph-default {
   font-size: 16px;
   text-align: center;
-  color: var(--color-7);
+  color: var(--color-6);
+}
+
+.paragraph-info {
+  font-size: 16px;
+  text-align: center;
+  color: var(--color-5);
 }
 
 .error-input {
@@ -41,7 +124,7 @@ body {
 
 .text-delete {
   text-align: center;
-  color: var(--color-7);
+  color: var(--color-6);
   margin-bottom: 32px;
 }
 
@@ -59,7 +142,7 @@ body {
 /* LOGIN */
 
 .form-inputs {
-  background-color: var(--color-7);
+  background-color: var(--color-2);
   margin: 32px 48px 0;
   border-radius: 32px;
   padding: 32px 16px;
@@ -68,7 +151,7 @@ body {
 
 .form-inputs h1 {
   text-align: center;
-  color: var(--color-4);
+  color: var(--color-5);
   font-weight: bold;
 }
 

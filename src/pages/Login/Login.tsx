@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Logo from '../../assets/img/logo.png'
+import Logo from '../../assets/img/dark.png'
 
 import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/Button/Button"
@@ -97,7 +97,7 @@ export const Login = () => {
         <Button typeBtn='principal' id="login" style={{ margin: '32px auto 0' }}>Entrar</Button>
       </form>
 
-      <p className='paragraph-default' style={{ marginTop: '32px', marginBottom: '16px' }}>Não tem uma conta?</p>
+      <p className='paragraph-info' style={{ marginTop: '32px', marginBottom: '16px' }}>Não tem uma conta?</p>
 
       <div>
         <Button 

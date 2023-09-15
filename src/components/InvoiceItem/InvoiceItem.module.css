@@ -1,5 +1,5 @@
 .content {
-  background-color: var(--color-7);
+  background-color: #F5F5F5;
   border-radius: 16px;
   flex: 1;
   margin-right: 16px;
@@ -10,11 +10,12 @@
 
 .content-item {
   align-items: center;
-  background-color: var(--color-6);
+  background-color: #FFFFFF;
   border-radius: 16px;
   padding: 8px;
-  color: var(--color-7);
+  color: #333333;
   margin-bottom: 12px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
 .content-item:last-child {
@@ -48,7 +49,7 @@
 .tooltip {
   font-size: 12px;
   position: absolute;
-  background-color: var(--color-1);
+  background-color: #E0E0E0;
   border-radius: 16px;
   text-align: center;
   z-index: 10;
@@ -56,6 +57,7 @@
   padding: 6px;
   margin-bottom: 85px;
   margin-right: 10px;
+  color: #333333;
 }
 
 .tooltip::after {
@@ -64,7 +66,7 @@
   height: 2;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid var(--color-1);
+  border-top: 8px solid #E0E0E0;
   position: absolute;
   right: 0;
   margin-right: 34px;

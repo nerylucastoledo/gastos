@@ -1,5 +1,5 @@
 .main {
-  background-color: var(--color-7);
+  background-color: var(--color-1);
   padding: 32px 0;
   display: flex;
   flex-flow: column;
@@ -11,15 +11,15 @@
 }
 
 .main h2 {
-  color: var(--color-1);
+  color: var(--color-5);
   font-size: 24px;
   text-align: center;
   margin-bottom: 16px;
+  font-weight: normal;
 }
 
 .box-values {
-  background-color: var(--color-2);
-  color: var(--color-7);
+  background-color: #424242;
   display: flex;
   margin: 0 16px;
   border-radius: 16px;
@@ -31,19 +31,19 @@
 }
 
 .box-values h2, .box-values p {
-  color: var(--color-7);
+  color: #FFFFFF;
   font-size: 18px;
   text-align: center;
+}
+
+.box-values p {
+  margin-top: 8px;
 }
 
 .line {
   width: 1px;
   height: 54px;
   background-color: var(--color-6);
-}
-
-.box-values p {
-  margin-top: 8px;
 }
 
 @keyframes animateUp {

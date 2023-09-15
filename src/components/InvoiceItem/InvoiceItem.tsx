@@ -32,7 +32,7 @@ export const InvoiceItem = ({ invoice, setModalEdit, setModalDelete, setActiveTo
               <>
                 {activeTooltip && indexTooltip === index && (
                   <div className={styles['tooltip']}>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas cum incidunt explicabo.</p>
+                    <p>{item.description}</p>
                   </div>
                 )}
                 <img onClick={() => handleClickInfo(index)} src={Info} alt="Icon info" />

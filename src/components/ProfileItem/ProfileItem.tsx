@@ -153,7 +153,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
                   value={name}
                   onChange={({ currentTarget }) => setName(currentTarget.value)}
                   style={{ width: '100%', marginTop: '6px' }}
-                  styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+                  styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
                 />
               </div>
 
@@ -167,7 +167,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
                     typeInput="normal"
                     label="Cor do cartão"
                     required
-                    styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+                    styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
                     style={{ width: '100%', marginTop: '6px', padding: '4px 16px' }}
                     onChange={({ target }) => setColor(target.value)}
                     value={color}
@@ -186,7 +186,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
           <Modal>
             {showPopup ? <Popup background={'red'}>Ocorreu um erro interno!</Popup> : null}
             <p data-testid="information-message" className='text-delete'>
-              Todos os dados com esse nome serão deletados. <br></br> Tem certeza que quer deletar o(a) <b>{itemSelected?.name}</b>?
+              Dados com esse nome serão deletados. <br></br> Tem certeza que quer deletar o(a) <b>{itemSelected?.name}</b>?
             </p>
             <div className='btn-delete'>
               <Button typeBtn='accepted' onClick={() => handleSubmit()}>Sim</Button>

@@ -16,11 +16,13 @@
 .ranking-box {
   background-color: var(--color-2);
   border-radius: 32px;
-  color: var(--color-7);
-  padding: 16px 16px;
+  color: #FFFFFF;
+  padding: 32px 16px;
   font-size: 16px;
   text-align: center;
   flex: 0 0 36%;
+  font-size: 16px;
+
 }
 
 .ranking-box:last-child {
@@ -28,7 +30,6 @@
 }
 
 .ranking-box h3 {
-  margin-top: 16px;
   text-transform: capitalize;
   max-width: 97px;
   text-overflow: ellipsis;
@@ -40,7 +41,7 @@
   width: 54px;
   height: 1px;
   background-color: var(--color-6);
-  margin: 16px auto;
+  margin: 32px auto;
 }
 
 .ranking-box-position {

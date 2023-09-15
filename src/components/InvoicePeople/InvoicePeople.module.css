@@ -10,8 +10,8 @@
   margin-bottom: 12px;
   border-radius: 16px;
   text-align: center;
-  background-color: var(--color-7);
-  color: var(--color-1);
+  background-color: #F5F5F5;
+  color: #333333;
   text-transform: capitalize;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -23,8 +23,8 @@
 }
 
 .active {
-  color: var(--color-7);
-  background-color: var(--color-2);
+  color: #333333;
+  font-weight: bold;
 }
 
 @keyframes animateUp {

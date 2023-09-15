@@ -1,5 +1,4 @@
 import { IDataByFilter } from '../../Context/DataByFilters'
-import { Start } from '../../assets/img/start'
 import { transformValueInReal } from '../../utils/utils'
 import styles from './Ranking.module.css'
 
@@ -29,7 +28,8 @@ export const Ranking = ({ data }: { data: IDataByFilter }) => {
 
   const returnColorStar = (index: number) => {
     if (index === 0) return '#FFD700'
-    return index === 1 ? '#C0C0C0' : '#CD7F32'
+    if (index === 1) return '#C0C0C0'
+    return index === 2 ? '#CD7F32' : '#333333'
   }
 
   if (ranking.length) {
@@ -39,11 +39,7 @@ export const Ranking = ({ data }: { data: IDataByFilter }) => {
   return (
     <div className={styles['ranking']} data-testid='ranking'>
       {ranking.length ? ranking.map((item, index) => (
-        <div className={styles['ranking-box']} key={item.name_category}>
-          <div className={styles['ranking-box-position']}>
-            {index <= 2 && <Start color={returnColorStar(index)}/>}
-            <p>{index + 1}°</p>
-          </div>
+        <div className={styles['ranking-box']} key={item.name_category} style={{ backgroundColor: returnColorStar(index)}}>
           <h3>{item.name_category}</h3>
           <div className={styles['line']}></div>
           <p>{transformValueInReal(item.total)}</p>

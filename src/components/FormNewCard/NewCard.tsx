@@ -61,7 +61,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
           value={name}
           onChange={({ currentTarget }) => setName(currentTarget.value)}
           style={{ width: '100%', marginTop: '6px', border: errorName ? '1px solid red' : 'unset' }}
-          styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+          styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
         />
         {errorName && <p className="error-input">Nome não pode ser vazio</p>}
       </div>
@@ -75,7 +75,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
           typeInput="normal"
           label="Cor do cartão"
           required
-          styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+          styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
           style={{ width: '100%', marginTop: '6px', padding: '4px 16px' }}
           onChange={({ target }) => setColor(target.value)}
           value={color}

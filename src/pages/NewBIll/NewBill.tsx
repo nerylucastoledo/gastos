@@ -12,12 +12,12 @@ import { useNavigate } from 'react-router-dom'
 
 const styleInput: React.CSSProperties = {
   marginTop: '6px', 
-  backgroundColor: 'var(--color-4)', 
+  backgroundColor: 'var(--color-2)', 
   width: '100%', 
 }
 
 const styleLabel: React.CSSProperties = {
-  color: 'var(--color-4)', 
+  color: 'var(--color-5)', 
   fontWeight: 'bold'
 }
 
@@ -37,6 +37,7 @@ export const NewBill = () => {
   const { data, loading, error, setUpdate } = useDataByFilter()
 
   const [nameItem, setNameItem] = useState('')
+  const [description, setDescription] = useState('')
   const [cardSelected, setCardSelect] = useState(data?.cardList.length ? data?.cardList[0].name : '')
   const [peopleSelected, setPeopleSelected] = useState('Eu')
   const [categorySelected, setCategorySelected] = useState(data?.categoryList.length ? data?.categoryList[0].name : '')
@@ -85,6 +86,7 @@ export const NewBill = () => {
 
         body.push({
           item: name,
+          description: description,
           username: window.localStorage.getItem('username'),
           value: Number(value),
           people: peopleSelected,
@@ -101,6 +103,7 @@ export const NewBill = () => {
 
     return {
       item: nameItem,
+      description: description,
       username: window.localStorage.getItem('username'),
       value: Number(value),
       people: peopleSelected,
@@ -142,7 +145,7 @@ export const NewBill = () => {
       {!error && loading && <Loading />}
 
       {!error && !loading && (
-        <div className={styles['content']}>
+        <div className={styles['content']} style={{ height: checkbox ? 'calc(100vh + 32px)' : 'calc(100vh - 52px)' }}>
           <form onSubmit={handleSubmit}>
             <label htmlFor="card" className={styles['label']}>Data</label>
             <div className={styles['box-select']}>
@@ -173,7 +176,7 @@ export const NewBill = () => {
                 label='Item'
                 typeInput='normal'
                 type='text'
-                style={{ ...styleInput, border: errorFields.includes('item') ? '1px solid red' : 'unset' }}
+                style={{ ...styleInput, border: errorFields.includes('item') ? '1px solid var(--color-error)' : 'unset' }}
                 styleLabel={{ ...styleLabel }}
                 placeholder='Nome do item'
                 value={nameItem}
@@ -183,6 +186,21 @@ export const NewBill = () => {
               {errorFields.includes('item') && <p className="error-input ">Preencha o nome</p>}
             </div>
 
+            <div style={{ marginBottom: '16px' }}>
+              <Input
+                label='Descrição'
+                typeInput='normal'
+                type='text'
+                style={{ ...styleInput }}
+                styleLabel={{ ...styleLabel }}
+                placeholder='Descreva'
+                maxLength={80}
+                value={description}
+                onChange={({ currentTarget }) => setDescription(currentTarget.value)}
+                data-testid="item-input"
+              />
+            </div>
+
             <div>
               <label htmlFor="card" className={styles['label']}>Cartão</label>
               <select 
@@ -190,7 +208,7 @@ export const NewBill = () => {
                 defaultValue={cardSelected} 
                 onChange={({target}) => setCardSelect(target.value)}
                 name='card'
-                style={{ border: errorFields.includes('card') ? '1px solid red' : 'unset' }}
+                style={{ border: errorFields.includes('card') ? '1px solid var(--color-error)' : 'unset' }}
                 data-testid="card-selected"
               >
                 {data?.cardList.map(card => (
@@ -222,7 +240,7 @@ export const NewBill = () => {
                 defaultValue={categorySelected} 
                 onChange={({target}) => setCategorySelected(target.value)}
                 name='category'
-                style={{ border: errorFields.includes('category') ? '1px solid red' : 'unset' }}
+                style={{ border: errorFields.includes('category') ? '1px solid var(--color-error)' : 'unset' }}
                 data-testid="category-selected"
               >
                 {data?.categoryList.map(category => (
@@ -236,7 +254,7 @@ export const NewBill = () => {
                 label='Valor'
                 typeInput='normal'
                 type='number'
-                style={{ ...styleInput, border: errorFields.includes('value') ? '1px solid red' : 'unset' }}
+                style={{ ...styleInput, border: errorFields.includes('value') ? '1px solid var(--color-error)' : 'unset' }}
                 styleLabel={{ ...styleLabel }}
                 placeholder='Digite o valor'
                 value={value}
@@ -246,7 +264,7 @@ export const NewBill = () => {
               {errorFields.includes('value') && <p className="error-input ">Preencha o valor</p>}
             </div>
 
-            <label htmlFor="installment" className={styles['checkbox']}>
+            <label htmlFor="installment" className={styles['checkbox']} style={{ color: '#FFFFFF' }}>
               <input 
                 type="checkbox" 
                 name="installment" 
@@ -264,7 +282,7 @@ export const NewBill = () => {
                   label='Parcelas'
                   typeInput='normal'
                   type='number'
-                  style={{ ...styleInput, border: errorFields.includes('installment') ? '1px solid red' : 'unset' }}
+                  style={{ ...styleInput, border: errorFields.includes('installment') ? '1px solid var(--color-error)' : 'unset' }}
                   styleLabel={{ ...styleLabel }}
                   placeholder='Digite a quantidade'
                   value={installment}

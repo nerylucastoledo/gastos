@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useDataByFilter } from "../../Context/DataByFilters"
 import { useFecth } from "../../hooks/useFecth"
 import { Header } from "../../components/Header/Header";
@@ -14,6 +14,7 @@ import { Button } from "../../components/Button/Button";
 import { Popup } from "../../components/Popup/Popup";
 import { Input } from "../../components/Input/Input";
 import { sendData } from "../../utils/SendDataApi";
+import { Arrowback } from '../../assets/arrowback'
 
 interface IContent {
   content: IBill[]
@@ -21,6 +22,7 @@ interface IContent {
 
 export const Invoice = () => {
   const { name_card } = useParams()
+  const navigate = useNavigate()
   const username = window.localStorage.getItem('username')
   const { month, year } = useDataByFilter()
 
@@ -139,11 +141,15 @@ export const Invoice = () => {
     <div>
       <Header />
 
-      <main className={`${styles['invoice']}  ${(modalEdit || modalDelete) && styles.active}`} onClick={closeModal}>
+      <main className={`${styles['invoice']} ${styles['animate-up']}  ${(modalEdit || modalDelete) && styles.active}`} onClick={closeModal}>
         {error && <ErrorScreen color="var(--color-1)" />}
+        <div className={styles['btn-back']}>
+          <Arrowback fill="var(--color-5)"/>
+          <p onClick={() => navigate('/')}>Voltar</p>
+        </div>
           <div 
             style={{ backgroundColor: cardColor }} 
-            className={`${styles['invoice-card']} ${styles['animate-up']}`}
+            className={`${styles['invoice-card']}`}
           >
             <h2 className={styles['title']}>{name_card}</h2>
             {!error && loading && <Loading />}
@@ -182,7 +188,7 @@ export const Invoice = () => {
                   value={item}
                   onChange={({ currentTarget }) => setItem(currentTarget.value)}
                   style={{ width: '100%', marginTop: '6px' }}
-                  styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+                  styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
                 />
               </div>
 
@@ -196,7 +202,7 @@ export const Invoice = () => {
                   value={value}
                   onChange={({ currentTarget }) => setValue(currentTarget.value)}
                   style={{ width: '100%', marginTop: '6px' }}
-                  styleLabel={{ color: 'var(--color-7)', fontWeight: 'bold' }}
+                  styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
                 />
               </div>
               <Button typeBtn='principal' id="criar" style={{ marginTop: '32px', width: '100%' }}>Atualizar</Button>
