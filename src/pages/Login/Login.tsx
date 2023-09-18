@@ -28,11 +28,13 @@ export const Login = () => {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: {
-        'Content-Type': 'application/json',
+          "access-control-allow-origin": "*",
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': '*',
         },
       }
 
-      const response = sendData(`${DEFAULT_URL}login`, { ...config })
+      const response = sendData(`${DEFAULT_URL}user/login`, { ...config })
       response.then(async (res) => {
         const json = await res.json().then(json => json)
         if (json.username && json.id) {
