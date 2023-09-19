@@ -7,7 +7,7 @@ import { Header } from '../../components/Header/Header'
 import { Loading } from '../../components/Loading/Loading'
 import { sendData } from '../../utils/SendDataApi'
 import { Popup } from '../../components/Popup/Popup'
-import { DEFAULT_URL, ShowPopup, monthsAndYears } from '../../utils/utils'
+import { ShowPopup, monthsAndYears } from '../../utils/utils'
 import { useNavigate } from 'react-router-dom'
 import { ErrorScreen } from '../../components/ErrorScreen/ErrorScreen'
 
@@ -60,7 +60,7 @@ export const NewBill = () => {
     if (!value.length) setErrorFields((previous) => [...previous, 'value'])
     if (checkbox && Number(installment) <= 1) setErrorFields((previous) => [...previous, 'installment'])
 
-    const url = `${DEFAULT_URL}bill${checkbox && Number(installment) > 1 ? '/list' : ''}`
+    const url = `${process.env.VITE_DEFAULT_URL}bill${checkbox && Number(installment) > 1 ? '/list' : ''}`
     
     if (nameItem && value) {
       const body: IBody | IBody[] = createBody(Number(installment))

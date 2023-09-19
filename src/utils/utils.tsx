@@ -5,8 +5,6 @@ export function transformValueInReal(value: number) {
   })
 }
 
-export const DEFAULT_URL = 'https://spring-apimeusgastos.onrender.com/'
-
 export function monthsAndYears() {
   const months = [
     'Janeiro',

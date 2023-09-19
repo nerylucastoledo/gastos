@@ -44,7 +44,7 @@ describe('New bill component with data', () => {
   })
 
   it('should render with 1 button on the screen', () => {
-    expect(screen.getAllByRole('button')[5].innerHTML).toEqual('Cadastrar')
+    expect(screen.getAllByRole('button')[6].innerHTML).toEqual('Cadastrar')
   })
 
   it('should show the installment quantity input when selecting the checkbox', () => {
@@ -60,7 +60,7 @@ describe('New bill component with data', () => {
   })
 
   it('should show error paragraphs in inputs when not filled in', () => {
-    const btnSend = screen.getAllByRole('button')[5]
+    const btnSend = screen.getAllByRole('button')[6]
     const checkbox = screen.getByTestId('checkbox-installment') as HTMLInputElement
 
     act(() => {
@@ -114,7 +114,8 @@ describe('New bill component with data', () => {
   })
 
   it('the popup should appear with the message "Ocorreu um erro interno, tente novamente mais tarde" when the api gives error', async () => {
-    const button = screen.getAllByRole('button')[5]
+    const button = screen.getByText('Cadastrar')
+
     const selecteMonth = screen.getByTestId('month-selected') as HTMLInputElement
     const selectYear = screen.getByTestId('year-selected') as HTMLInputElement
     const inputItem = screen.getByTestId('item-input') as HTMLInputElement
@@ -137,7 +138,7 @@ describe('New bill component with data', () => {
     })
 
     await waitFor(() => {
-      expect(screen.getByText('Ocorreu um erro interno, tente novamente mais tarde')).toBeInTheDocument()
+      expect(screen.getByText('Ocorreu um erro interno!')).toBeInTheDocument()
     })
   })
 })

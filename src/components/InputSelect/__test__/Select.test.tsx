@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react"
 import { Select } from "../Select"
 import { DataByFilterContextProvider } from '../../../Context/DataByFilters'
 
+const setMonth = jest.fn()
+const setYear = jest.fn()
+
 const months = [
   'Janeiro',
   'Fevereiro',
@@ -20,7 +23,16 @@ const months = [
 
 describe('Select component', () => {
   beforeEach(() => {
-    render(<DataByFilterContextProvider><Select /></DataByFilterContextProvider>)
+    render(
+    <DataByFilterContextProvider>
+      <Select 
+        setMonth={setMonth} 
+        setYear={setYear} 
+        month={months[0]} 
+        year={'2023'} 
+      />
+    </DataByFilterContextProvider>
+    )
   })
 
   it('should render with the current month and year', () => {

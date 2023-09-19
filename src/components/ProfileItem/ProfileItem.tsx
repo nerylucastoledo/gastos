@@ -11,7 +11,6 @@ import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
 import { sendData } from '../../utils/SendDataApi';
 import { Popup } from '../Popup/Popup';
-import { DEFAULT_URL } from '../../utils/utils';
 
 interface IProps {
   title: string;
@@ -92,7 +91,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
         },
       }
 
-      const response = sendData(`${DEFAULT_URL}${nameItem}/${itemSelected?.id}`, { ...config })
+      const response = sendData(`${process.env.VITE_DEFAULT_URL}${nameItem}/${itemSelected?.id}`, { ...config })
       response.then((res) => {
         if (res.ok) {
           setUpdate(true)
@@ -108,7 +107,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
 
   const deleteItem = () => {
     if (itemSelected) {
-      const response = sendData(`${DEFAULT_URL}${nameItem}/${itemSelected?.id}`, { method: 'DELETE' })
+      const response = sendData(`${process.env.VITE_DEFAULT_URL}${nameItem}/${itemSelected?.id}`, { method: 'DELETE' })
       response.then((res) => {
         if (res.ok) {
           setUpdate(true)

@@ -12,7 +12,7 @@ import { transformValueInReal } from "../../utils/utils"
 import { useEffect } from "react"
 
 export const Home = () => {
-  const { data, loading, error, setUpdate } = useDataByFilter()
+  const { data, loading, error, setUpdate, setMonth, setYear, month, year } = useDataByFilter()
   const valueToPay = data?.content.reduce((acc, item) => {
     return item.people === 'Eu' ? Number(acc) + Number(item.value) : acc
   }, 0)
@@ -32,7 +32,12 @@ export const Home = () => {
 
         {!error && !loading && valueToPay !== undefined && data && (
           <div className={styles['animate-right']}> 
-            <Select />
+            <Select 
+              setMonth={setMonth} 
+              setYear={setYear} 
+              month={month}
+              year={year}
+            />
 
             <div className={styles['box-values']}>
               <div>

@@ -30,7 +30,7 @@ describe('New bill component with data', () => {
   it('should show the titles on the page', () => {
     expect(screen.getByText('Suas categorias')).toBeInTheDocument()
     expect(screen.getByText('Pessoas cadastradas')).toBeInTheDocument()
-    expect(screen.getByText('Cartões cadastradao')).toBeInTheDocument()
+    expect(screen.getByText('Cartões cadastrados')).toBeInTheDocument()
   })
 
   it('should show the salary input', () => {

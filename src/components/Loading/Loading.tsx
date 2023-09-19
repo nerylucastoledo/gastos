@@ -1,18 +1,7 @@
-import React from 'react'
-
-const style: React.CSSProperties = {
-  border: "2rem solid var(--color-4)",
-  borderRightColor: "var(--color-1)",
-  width: "4rem",
-  height: "4rem",
-  borderRadius: "50%",
-  animation: "spin 1s infinite",
-}
+import styles from './Loading.module.css'
 
 export const Loading = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '64px'}}>
-      <div style={{ ...style }}></div>
-    </div>
+    <div className={styles['loading']}></div>
   )
 }

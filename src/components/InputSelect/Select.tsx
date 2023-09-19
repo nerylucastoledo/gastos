@@ -1,5 +1,4 @@
 import styles from './Select.module.css'
-import { useDataByFilter } from '../../Context/DataByFilters';
 import { monthsAndYears } from '../../utils/utils';
 
 export interface IBill {
@@ -19,8 +18,14 @@ export interface IBillByDate {
   content: IBill[]
 }
 
-export const Select = () => {
-  const { month, setMonth, year, setYear } = useDataByFilter()
+interface IProps {
+  setMonth: React.Dispatch<React.SetStateAction<string>>;
+  setYear: React.Dispatch<React.SetStateAction<string>>;
+  month: string;
+  year: string;
+}
+
+export const Select = ({ setMonth, setYear, month, year }: IProps) => {
   const { months, years } = monthsAndYears()
 
   return (

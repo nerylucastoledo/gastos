@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { Popup } from '../Popup/Popup'
-import { DEFAULT_URL, ShowPopup } from '../../utils/utils'
+import { ShowPopup } from '../../utils/utils'
 import { sendData } from '../../utils/SendDataApi'
 import { useDataByFilter } from '../../Context/DataByFilters'
 
@@ -32,7 +32,7 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
       },
     }
 
-    const response = sendData(`${DEFAULT_URL}${url}`, { ...config })
+    const response = sendData(`${process.env.VITE_DEFAULT_URL}${url}`, { ...config })
     response.then((res) => {
       if (res.ok) {
         setUpdate(true)

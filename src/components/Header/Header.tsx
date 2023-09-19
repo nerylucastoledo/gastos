@@ -64,6 +64,7 @@ export const Header = () => {
         <button onClick={() => openModal('category')}>Inserir categoria</button>
         <button onClick={() => openModal('people')}>Inserir pessoa</button>
         <button onClick={() => navigate('/new-bill')}>Inserir gasto</button>
+        <button onClick={() => navigate('/report')}>Relatório</button>
         <a href='/profile'>Meu perfil</a>
       </nav>
 

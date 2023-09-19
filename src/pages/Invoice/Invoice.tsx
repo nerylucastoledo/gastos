@@ -15,7 +15,7 @@ import { Popup } from "../../components/Popup/Popup";
 import { Input } from "../../components/Input/Input";
 import { sendData } from "../../utils/SendDataApi";
 import { Arrowback } from '../../assets/arrowback'
-import { DEFAULT_URL } from "../../utils/utils";
+import { transformValueInReal } from "../../utils/utils";
 
 interface IContent {
   content: IBill[]
@@ -34,12 +34,13 @@ export const Invoice = () => {
   const [modalDelete, setModalDelete] = useState<boolean | IBill>(false)
   const [activeTooltip, setActiveTooltip] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
+  const [totalInvoice, setTotalInvoice] = useState(0)
 
   const [item, setItem] = useState('')
   const [value, setValue] = useState('')
 
   const { data, loading, error, setUpdate } = useFecth<IContent>(
-    `${DEFAULT_URL}bill/by-card?username=${username}&date=${month+year}&card=${name_card}`
+    `${process.env.VITE_DEFAULT_URL}bill/by-card?username=${username}&date=${month+year}&card=${name_card}`
   )
   const content = useDataByFilter()
 
@@ -54,8 +55,10 @@ export const Invoice = () => {
     const peoples: Set<string> = new Set()
     data?.content.map(item => item.people !== 'Eu' && peoples.add(item.people))
     const dataFilterByName = data?.content.filter(item => item.people === peopleSelected)
+    const value = dataFilterByName?.reduce((total, transaction) => Number(total) + Number(transaction.value), 0)
     setPeoples([...peoples])
     setInvoice(dataFilterByName)
+    setTotalInvoice(value ? value : 0)
   }, [peopleSelected, data])
 
   const cardColor = content.data?.cardList.filter(card => card.name === name_card)[0].color
@@ -95,7 +98,7 @@ export const Invoice = () => {
         },
       }
 
-      const response = sendData(`${DEFAULT_URL}bill/${modalEdit?.id}`, { ...config })
+      const response = sendData(`${process.env.VITE_DEFAULT_URL}bill/${modalEdit?.id}`, { ...config })
       response.then((res) => {
         if (res.ok) {
           setUpdate(true)
@@ -111,7 +114,7 @@ export const Invoice = () => {
 
   const deleteItem = () => {
     if (modalDelete !== true && modalDelete !== false) {
-      const response = sendData(`${DEFAULT_URL}bill/${modalDelete?.id}`, { method: 'DELETE' })
+      const response = sendData(`${process.env.VITE_DEFAULT_URL}bill/${modalDelete?.id}`, { method: 'DELETE' })
       response.then((res) => {
         if (res.ok) {
           setUpdate(true)
@@ -155,21 +158,24 @@ export const Invoice = () => {
             <h2 className={styles['title']}>{name_card}</h2>
             {!error && loading && <Loading />}
             {!error && !loading && data && invoice && peoples && (
-              <div style={{ display: 'flex' }}>
-                <InvoicePeople 
-                  peoples={peoples} 
-                  setPeopleSelected={setPeopleSelected}
-                  peopleSelected={peopleSelected}
-                />
+              <>
+                <div style={{ display: 'flex' }}>
+                  <InvoicePeople 
+                    peoples={peoples} 
+                    setPeopleSelected={setPeopleSelected}
+                    peopleSelected={peopleSelected}
+                  />
 
-                <InvoiceItem 
-                  invoice={invoice}
-                  setModalEdit={setModalEdit}
-                  setModalDelete={setModalDelete}
-                  setActiveTooltip={setActiveTooltip}
-                  activeTooltip={activeTooltip}
-                />
-              </div>
+                  <InvoiceItem 
+                    invoice={invoice}
+                    setModalEdit={setModalEdit}
+                    setModalDelete={setModalDelete}
+                    setActiveTooltip={setActiveTooltip}
+                    activeTooltip={activeTooltip}
+                  />
+                </div>
+                <p className={styles['total-invoice-people']}>Total: {transformValueInReal(totalInvoice)}</p>
+              </>
             )}
           </div>
       </main>

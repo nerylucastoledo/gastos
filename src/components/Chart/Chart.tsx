@@ -3,7 +3,7 @@ import { useFecth } from '../../hooks/useFecth'
 import { IBill } from '../InputSelect/Select'
 import { useDataByFilter } from '../../Context/DataByFilters'
 import styles from './Chart.module.css'
-import { DEFAULT_URL, transformValueInReal } from '../../utils/utils'
+import { transformValueInReal } from '../../utils/utils'
 
 interface IData {
   content: IBill[]
@@ -85,7 +85,7 @@ export const Chart = () => {
   const username = window.localStorage.getItem('username')
   const { year } = useDataByFilter()
   const { data, loading, error} = useFecth<IData>(
-    `${DEFAULT_URL}bill/all?username=${username}&year=${year}`
+    `${process.env.VITE_DEFAULT_URL}bill/all?username=${username}&year=${year}`
   )
 
 

@@ -6,7 +6,6 @@ import { Button } from "../../components/Button/Button"
 import { Input } from "../../components/Input/Input"
 import { Popup } from "../../components/Popup/Popup"
 import { sendData } from "../../utils/SendDataApi"
-import { DEFAULT_URL } from "../../utils/utils"
 
 export const CreateAccount = () => {
   const navigate = useNavigate()
@@ -44,7 +43,7 @@ export const CreateAccount = () => {
         }
       }
 
-      const response = sendData(`${DEFAULT_URL}user/create`, { ...config })
+      const response = sendData(`${process.env.VITE_DEFAULT_URL}user/create`, { ...config })
       response.then((res) => {
         if (!res.ok) {
           if (res.status === 500) throw new Error('email')

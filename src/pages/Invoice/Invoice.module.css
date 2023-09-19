@@ -16,7 +16,7 @@
 }
 
 .invoice-card {
-  height: calc(100vh - 200px);
+  height: calc(100vh - 184px);
   border-radius: 16px 16px 0 0;
   position: relative;
 }
@@ -49,6 +49,14 @@
   color: var(--color-5);
   font-size: 24px;
   margin-left: 2px;
+}
+
+.total-invoice-people {
+  text-align: right;
+  margin-right: 16px;
+  margin-top: 16px;
+  font-size: 18px;
+  color: #FFFFFF;
 }
 
 @keyframes animateUp {

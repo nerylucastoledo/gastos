@@ -10,7 +10,6 @@ import UpdateBtn from '../../assets/img/update.png'
 import styles from './Profile.module.css'
 import { sendData } from '../../utils/SendDataApi'
 import { Popup } from '../../components/Popup/Popup'
-import { DEFAULT_URL } from '../../utils/utils'
 
 export const Profile = () => {
   const { data, loading, error, setUpdate } = useDataByFilter()
@@ -36,7 +35,7 @@ export const Profile = () => {
       },
     }
 
-    const response = sendData(`${DEFAULT_URL}user/${idUser}`, { ...config })
+    const response = sendData(`${process.env.VITE_DEFAULT_URL}user/${idUser}`, { ...config })
     response.then((res) => {
       if (res.ok) return setUpdate(true)
 
@@ -86,7 +85,7 @@ export const Profile = () => {
 
             <ProfileItem title={"Suas categorias"} nameItem="category" setUpdate={setUpdate} data={data?.categoryList} />
             <ProfileItem title={"Pessoas cadastradas"} nameItem="people" setUpdate={setUpdate} data={data?.peopleList}/>
-            <ProfileItem title={"Cartões cadastradao"} nameItem="card" setUpdate={setUpdate} data={data?.cardList} />
+            <ProfileItem title={"Cartões cadastrados"} nameItem="card" setUpdate={setUpdate} data={data?.cardList} />
           </>
         )}
 

@@ -9,6 +9,7 @@ import ProtectedRoute from "./utils/PrivateRoute";
 import { NewBill } from "./pages/NewBIll/NewBill";
 import { Invoice } from "./pages/Invoice/Invoice";
 import { useTheme } from "./Context/ThemeContext";
+import { Report } from "./pages/Report/Report";
 
 function App() {
   const { theme} = useTheme()
@@ -40,6 +41,11 @@ function App() {
             <Route path="/new-bill" element={
               <ProtectedRoute>
                 <NewBill />
+              </ProtectedRoute>
+            }/>
+            <Route path="/report" element={
+              <ProtectedRoute>
+                <Report />
               </ProtectedRoute>
             }/>
           </Routes>
