@@ -72,7 +72,7 @@ export const Header = () => {
 
       <div className={styles['box-logout-theme']}>
         <label className="switch">
-          <input type="checkbox" checked={theme === 'dark'} onChange={switchTheme}/>
+          <input type="checkbox" name='checkbox' checked={theme === 'dark'} onChange={switchTheme}/>
           <span className="slider round"></span>
         </label>
       </div>

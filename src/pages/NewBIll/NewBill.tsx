@@ -152,13 +152,14 @@ export const NewBill = () => {
       {!error && !loading && (
         <div className={styles['content']} style={{ height: checkbox ? 'calc(100vh + 32px)' : 'calc(100vh - 52px)' }}>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="card" className={styles['label']}>Data</label>
+            <label htmlFor="date" className={styles['label']}>Data</label>
             <div className={styles['box-select']}>
               <select 
                 className={styles['select']} 
                 defaultValue={currentMonth} 
                 onChange={({target}) => setMonth(target.value)}
                 data-testid="month-selected"
+                name='date'
               >
                 {months.map(uniqueMonth => (
                   <option key={uniqueMonth} value={uniqueMonth}>{uniqueMonth}</option>

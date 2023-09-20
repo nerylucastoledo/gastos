@@ -26,20 +26,14 @@ export const Ranking = ({ data }: { data: IDataByFilter }) => {
     return categorys
   }
 
-  const returnColorStar = (index: number) => {
-    if (index === 0) return '#FFD700'
-    if (index === 1) return '#C0C0C0'
-    return index === 2 ? '#CD7F32' : '#333333'
-  }
-
   if (ranking.length) {
     ranking.sort((item, nextitem) => item.total < nextitem.total ? 1 : -1)
   }
 
   return (
     <div className={styles['ranking']} data-testid='ranking'>
-      {ranking.length ? ranking.map((item, index) => (
-        <div className={styles['ranking-box']} key={item.name_category} style={{ backgroundColor: returnColorStar(index)}}>
+      {ranking.length ? ranking.map((item) => (
+        <div className={styles['ranking-box']} key={item.name_category}>
           <h3>{item.name_category}</h3>
           <div className={styles['line']}></div>
           <p>{transformValueInReal(item.total)}</p>
