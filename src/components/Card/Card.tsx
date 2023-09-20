@@ -59,7 +59,7 @@ export const Card = ({ data }: { data: IDataByFilter} ) => {
           >
             <div>
               <h3>{card.name_card}</h3>
-              <img src={CardImg} alt="Icon card" />
+              <img width={32} height={32} src={CardImg} alt="Icon card" />
             </div>
             <p>{transformValueInReal(card.invoice ?? 0)}</p>
           </div>

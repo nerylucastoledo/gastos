@@ -74,6 +74,8 @@ export const Profile = () => {
               </div>
               {data.salary !== salary && (
                 <img 
+                  width={48}
+                  height={48}
                   style={{ marginTop: '20px' }} 
                   src={UpdateBtn} 
                   alt="Botão de atualizar" 

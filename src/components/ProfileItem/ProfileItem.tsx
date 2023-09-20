@@ -203,12 +203,16 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
             <p>{item.name}</p>
 
             <img 
+              width={12}
+              height={12}
               onClick={() => openModalEdit(item)} 
               style={{ marginRight: '8px' }} 
               src={IconEdit} 
               alt="Icon editar" 
             />
             <img 
+              width={18}
+              height={18}
               onClick={() => openModalDelete(item)} 
               src={IconDelete} 
               alt="Icon deletar" 

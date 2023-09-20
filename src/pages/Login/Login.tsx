@@ -55,7 +55,7 @@ export const Login = () => {
     <div className='login-container'>
       {error.length ? <Popup>{error}</Popup> : null}
 
-      <img className='logo-center' src={Logo} alt="Logo da empresa" />
+      <img width={130} height={88} className='logo-center' src={Logo} alt="Logo da empresa" />
       <p className='paragraph-default'>Preencha as informações para acessar</p>
 
       <form onSubmit={handleForm} className='form-inputs'>

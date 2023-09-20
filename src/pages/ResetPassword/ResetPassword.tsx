@@ -14,7 +14,7 @@ export const ResetPassword = () => {
 
   return (
     <div className='login-container'>
-      <img className='logo-center' src={Logo} alt="Logo da empresa" />
+      <img width={130} height={88} className='logo-center' src={Logo} alt="Logo da empresa" />
       
       <div className={styles['content']}>
         <h1>Resetar a senha</h1>

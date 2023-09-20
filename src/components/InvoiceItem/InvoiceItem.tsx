@@ -35,11 +35,11 @@ export const InvoiceItem = ({ invoice, setModalEdit, setModalDelete, setActiveTo
                     <p>{item.description}</p>
                   </div>
                 )}
-                <img data-testid={`icon-tooltip-${index + 1}`} onClick={() => handleClickInfo(index)} src={Info} alt="Icon info" />
+                <img width={12} height={12} data-testid={`icon-tooltip-${index + 1}`} onClick={() => handleClickInfo(index)} src={Info} alt="Icon info" />
               </>
             )}
-            <img data-testid={`icon-edit-${index + 1}`} onClick={() => setModalEdit(item)} src={Edit} alt="Icon edit" />
-            <img data-testid={`icon-delete-${index + 1}`} onClick={() => setModalDelete(item)} src={Delete} alt="Icon delete" />
+            <img width={12} height={12} data-testid={`icon-edit-${index + 1}`} onClick={() => setModalEdit(item)} src={Edit} alt="Icon edit" />
+            <img width={18} height={18} data-testid={`icon-delete-${index + 1}`} onClick={() => setModalDelete(item)} src={Delete} alt="Icon delete" />
           </div>
           <div className={styles['content-item-values']}>
             <p data-testid="text-item" className={styles['content-item-values-title']}>{item.item}</p>

@@ -61,7 +61,7 @@ export const CreateAccount = () => {
     <div className='login-container'>
       {error.length ? <Popup>{error}</Popup> : null}
 
-      <img className='logo-center' src={Logo} alt="Logo da empresa" />
+      <img width={130} height={88} className='logo-center' src={Logo} alt="Logo da empresa" />
         <form onSubmit={handleForm} className='form-inputs'>
           <h1>Criar conta</h1>
           

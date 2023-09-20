@@ -68,7 +68,7 @@ export const Header = () => {
         <a href='/profile'>Meu perfil</a>
       </nav>
 
-      <img onClick={() => navigate('/')} src={Logo} alt="Logo da empresa" />
+      <img width={130} height={88} onClick={() => navigate('/')} src={Logo} alt="Logo da empresa" />
 
       <div className={styles['box-logout-theme']}>
         <label className="switch">
@@ -77,7 +77,7 @@ export const Header = () => {
         </label>
       </div>
 
-      <img src={Logout} onClick={handleLogout} alt="Sair" />
+      <img width={32} height={32} src={Logout} onClick={handleLogout} alt="Sair" />
 
       {isModalOpen && (
         <Modal>
