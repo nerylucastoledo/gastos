@@ -27,6 +27,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 4px;
+  position: relative;
 }
 
 .content-item-icon img:not(:last-child) {
@@ -48,16 +49,16 @@
 
 .tooltip {
   font-size: 12px;
+  background-color: #424242;
   position: absolute;
-  background-color: #E0E0E0;
   border-radius: 16px;
   text-align: center;
   z-index: 10;
   max-width: 180px;
   padding: 6px;
-  margin-bottom: 85px;
+  margin-bottom: 60px;
   margin-right: 10px;
-  color: #333333;
+  color: #FFFFFF;
 }
 
 .tooltip::after {
@@ -66,7 +67,7 @@
   height: 2;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid #E0E0E0;
+  border-top: 8px solid #424242;
   position: absolute;
   right: 0;
   margin-right: 34px;
