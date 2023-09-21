@@ -11,7 +11,7 @@ const DataContext = createContext<IThemeContext | null>(null)
 
 export const useTheme = () => {
   const context = useContext(DataContext)
-  if (!context) throw new Error("useTheme deve estar em DataContextProvider")
+  if (!context) throw new Error("useTheme deve estar em ThemeContextProvider")
   return context
 }
 

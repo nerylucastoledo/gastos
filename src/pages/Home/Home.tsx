@@ -65,7 +65,7 @@ export const Home = () => {
               </>
             ) : (
               <>
-                <div style={{ padding: '32px', width: '100%', textAlign: 'center' }}>
+                <div style={{ padding: '32px', width: '100%', textAlign: 'center', color: 'var(--color-9)' }}>
                   <i>Boooa! <br /> Você ainda não tem nenhum gasto para esse mês \o/</i>
                 </div>
               </>

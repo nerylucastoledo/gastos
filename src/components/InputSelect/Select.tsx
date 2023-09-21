@@ -34,6 +34,7 @@ export const Select = ({ setMonth, setYear, month, year }: IProps) => {
         className={styles['select']} 
         defaultValue={month} 
         onChange={({target}) => setMonth(target.value)}
+        data-testid="select-month"
       >
         {months.map(uniqueMonth => (
           <option key={uniqueMonth} value={uniqueMonth}>{uniqueMonth}</option>
@@ -44,6 +45,7 @@ export const Select = ({ setMonth, setYear, month, year }: IProps) => {
         className={styles['select']} 
         defaultValue={year} 
         onChange={({target}) => setYear(target.value)}
+        data-testid="select-year"
       >
         {years.reverse().map(uniqueYear => (
           <option key={uniqueYear} value={uniqueYear}>{uniqueYear}</option>

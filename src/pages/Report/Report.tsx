@@ -62,39 +62,47 @@ export const Report = () => {
     <>
       <Header />
 
-      {error !== null && <ErrorScreen />}
+      {error && <ErrorScreen />}
 
       {!error && loading && <div className={styles['home-loading']}><Loading /></div>}
 
-      {!error && !loading && data && (
+      {!error && !loading && (
         <main className={styles['report']}>
-          <h1 className={styles['report-title']}>Relatório mensal</h1>
+          {report.length ? (
+            <>
+              <h1 className={styles['report-title']}>Relatório mensal</h1>
 
-          <Select 
-            setMonth={setMonth} 
-            setYear={setYear} 
-            month={month}
-            year={year}
-          />
+              <Select 
+                setMonth={setMonth} 
+                setYear={setYear} 
+                month={month}
+                year={year}
+              />
 
-          <div className={styles['box-table']}>
-            <table className={styles['table']}>
-              <thead>
-                <tr>
-                  {report.map((item) => (
-                    <th  key={item.people}>{item.people}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  {report.map((item) => (
-                    <td key={item.people + item.value}>{transformValueInReal(item.value)}</td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
+              <div className={styles['box-table']}>
+                <table className={styles['table']}>
+                  <thead>
+                    <tr>
+                      {report.map((item) => (
+                        <th  key={item.people}>{item.people}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      {report.map((item) => (
+                        <td key={item.people + item.value}>{transformValueInReal(item.value)}</td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </>
+          ) : (
+            <div style={{ padding: '32px', width: '100%', textAlign: 'center', color: 'var(--color-9)' }}>
+              <i>Boooa! <br /> Você ainda não tem nenhum gasto para esse mês \o/</i>
+            </div>
+          )}
         </main>
       )}
 

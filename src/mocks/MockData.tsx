@@ -1,6 +1,6 @@
 export const mockDataProps = {
-  "salary": 3757,
-  "name": "Lucas",
+  "salary": 2000,
+  "name": "Test",
   "content": [
     {
       "id": 1,
@@ -58,8 +58,8 @@ export const mockDataProps = {
 }
 
 export const mockWhithoutDataProps = {
-  "salary": 3757,
-  "name": "Lucas",
+  "salary": 2000,
+  "name": "Test",
   "content": [],
   "cardList": [],
   "peopleList": [],
@@ -67,8 +67,8 @@ export const mockWhithoutDataProps = {
 }
 
 export const mockDataRanking = {
-  "salary": 3757,
-  "name": "Lucas",
+  "salary": 2000,
+  "name": "Test",
   "content": [
     {
       "id": 1,
