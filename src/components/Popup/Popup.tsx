@@ -7,7 +7,7 @@ interface IProps extends React.PropsWithChildren{
 
 export const Popup = ({ children, background }: IProps) => {
   return (
-    <div className={styles['container']} style={{ background: background ?? 'red'}}>
+    <div className={styles['container']} style={{ background: background ?? 'var(--color-error)'}}>
       <p data-testid={'text'}>{children}</p>
     </div>
   )

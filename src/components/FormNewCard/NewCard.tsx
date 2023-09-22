@@ -12,10 +12,17 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
   const [errorName, setErrorName] = useState(false)
   const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
   const username = window.localStorage.getItem('username')
-  const { setUpdate } = useDataByFilter()
+  const { data, setUpdate } = useDataByFilter()
 
   const insert = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    const isValidCard = validCard()
+
+    if (isValidCard?.length) {
+      notification({ message: 'Esse cartão já esta cadastrado!', background: 'var(--color-error)' })
+      return
+    }
 
     if (!name.length) return setErrorName(true)
 
@@ -31,11 +38,16 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
     response.then((res) => {
       if (res.ok) {
         setUpdate(true)
+        setIsModalOpen(false)
         return
       }
 
       notification({ message: 'Ocorreu um erro interno!', background: 'red' })
     }).catch(() => notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' }))
+  }
+
+  const validCard = () => {
+    return data?.cardList.filter((card) => card.name === name)
   }
 
   const notification = (props: ShowPopup) => {

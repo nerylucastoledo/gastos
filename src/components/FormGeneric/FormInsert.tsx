@@ -5,6 +5,7 @@ import { Popup } from '../Popup/Popup'
 import { ShowPopup } from '../../utils/utils'
 import { sendData } from '../../utils/SendDataApi'
 import { useDataByFilter } from '../../Context/DataByFilters'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 
 interface IProps {
   nameInput: string;
@@ -16,17 +17,24 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
   const [name, setName] = useState('')
   const [error, setError] = useState(false)
   const [showPopup, setShowPopup] = useState<ShowPopup | null>(null)
-  const username = window.localStorage.getItem('username')
-  const { setUpdate } = useDataByFilter()
+  const username = useLocalStorage('username', '')
+  const { data, setUpdate } = useDataByFilter()
 
   const insert = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    const isValidName = validName()
+
+    if (isValidName?.length) {
+      notification({ message: 'Esse nome já esta cadastrado!', background: 'var(--color-error)' })
+      return
+    }
 
     if (!name.length) return setError(true)
 
     const config = {
       method: 'POST',
-      body: JSON.stringify({ name: name, username }),
+      body: JSON.stringify({ name: name, username: username[0] }),
       headers: {
       'Content-Type': 'application/json',
       },
@@ -36,11 +44,20 @@ export const FormInsert =  ({ nameInput, url, setIsModalOpen }: IProps) => {
     response.then((res) => {
       if (res.ok) {
         setUpdate(true)
+        setIsModalOpen(false)
         return
       }
 
       notification({ message: 'Ocorreu um erro interno!', background: 'red' })
     }).catch(() => notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' }))
+  }
+
+  const validName = () => {
+    if (nameInput === "categoria") {
+      return data?.categoryList.filter((category) => category.name === name)
+    }
+
+    return data?.peopleList.filter((people) => people.name === name)
   }
 
   const notification = (props: ShowPopup) => {
