@@ -239,6 +239,74 @@ export const mockProfileItemPeopleList = [
   }
 ]
 
+export const mockDataInvoice = {
+  data: {
+    "content": [
+      {
+        "id": 1,
+        "item": "Item 1",
+        "value": 10,
+        "card": "Card 1",
+        "people": "Eu",
+        "category": "Outros",
+        "date": "Setembro2023",
+        "description": ""
+      },
+      {
+        "id": 2,
+        "item": "Item 2",
+        "value": 10,
+        "card": "Card 1",
+        "people": "Eu",
+        "category": "Outros",
+        "date": "Setembro2023",
+        "description": ""
+      },
+      {
+        "id": 3,
+        "item": "Item 3",
+        "value": 10,
+        "card": "Card 1",
+        "people": "Eu",
+        "category": "Outros",
+        "date": "Setembro2023",
+        "description": ""
+      },
+      {
+        "id": 4,
+        "item": "Item 4",
+        "value": 10,
+        "card": "Card 1",
+        "people": "Eu",
+        "category": "Outros",
+        "date": "Setembro2023",
+        "description": ""
+      },
+      {
+        "id": 5,
+        "item": "Item 5",
+        "value": 10,
+        "card": "Card 1",
+        "people": "Eu",
+        "category": "Outros",
+        "date": "Setembro2023",
+        "description": ""
+      },
+      {
+        "id": 6,
+        "item": "Item 6",
+        "value": 10,
+        "card": "Card 1",
+        "people": "Eu",
+        "category": "Outros",
+        "date": "Setembro2023",
+        "description": ""
+      }
+    ]
+  },
+  loading: false,
+  error: null
+}
 
 export const mockNewBillDataUseDataByFilter = {
   data: {

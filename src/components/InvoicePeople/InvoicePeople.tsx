@@ -9,7 +9,7 @@ interface IProps {
 
 export const InvoicePeople = ({ peoples, setPeopleSelected, peopleSelected }: IProps) => {
   return (
-    <ul className={`${styles['people-content']} ${styles['animate-right']}`}>
+    <ul data-testid="invoice-people" className={`${styles['people-content']} ${styles['animate-right']}`}>
       <li 
         onClick={() => setPeopleSelected('Eu')} 
         className={`${styles['people-content-item']} ${'Eu' === peopleSelected ? `${styles['active']} active` : ''}`}

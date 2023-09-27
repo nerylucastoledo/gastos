@@ -25,7 +25,6 @@ export const Invoice = () => {
   const { name_card } = useParams()
   const navigate = useNavigate()
   const username = window.localStorage.getItem('username')
-  const { month, year } = useDataByFilter()
 
   const [peopleSelected, setPeopleSelected] = useState('Eu')
   const [peoples, setPeoples] = useState<undefined | string[]>([])
@@ -39,10 +38,10 @@ export const Invoice = () => {
   const [item, setItem] = useState('')
   const [value, setValue] = useState('')
 
-  const { data, loading, error, setUpdate } = useFecth<IContent>(
-    `${process.env.VITE_DEFAULT_URL}bill/by-card?username=${username}&date=${month+year}&card=${name_card}`
-  )
   const content = useDataByFilter()
+  const { data, loading, error, setUpdate } = useFecth<IContent>(
+    `${process.env.VITE_DEFAULT_URL}bill/by-card?username=${username}&date=${content.month+content.year}&card=${name_card}`
+  )
 
   useEffect(() => {
     if (modalEdit !== true && modalEdit !== false) {
@@ -174,7 +173,7 @@ export const Invoice = () => {
                     activeTooltip={activeTooltip}
                   />
                 </div>
-                <p className={styles['total-invoice-people']}>Total: {transformValueInReal(totalInvoice)}</p>
+                <p data-testid="invoice-total" className={styles['total-invoice-people']}>Total: {transformValueInReal(totalInvoice)}</p>
               </>
             )}
           </div>

@@ -23,9 +23,8 @@ export const InvoiceItem = ({ invoice, setModalEdit, setModalDelete, setActiveTo
     setIndexTooltip(index)
   }
 
-
   return (
-    <div className={`${styles['content']} ${styles['animate-right']}`}>
+    <div data-testid="invoice-item" className={`${styles['content']} ${styles['animate-right']}`}>
       {invoice.length ? invoice.map((item, index) => (
         <div key={`${item.item} - ${index + 1}`} className={styles['content-item']}>
           <div className={styles['content-item-icon']}>
