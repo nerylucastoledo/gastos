@@ -130,7 +130,7 @@ export const NewBill = () => {
         navigate('/')
       }
 
-      notification({ message: 'Ocorreu um erro interno!', background: 'red' })
+      notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' })
     }).catch(() => notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' }))
   }
 

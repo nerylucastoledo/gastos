@@ -141,7 +141,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
       {isModalOpenEdit && (
         <>
           <Modal>
-            {showPopup ? <Popup background={'red'}>Ocorreu um erro interno!</Popup> : null}
+            {showPopup ? <Popup background={'var(--color-error)'}>Ocorreu um erro interno!</Popup> : null}
             <form onSubmit={handleSubmit} data-testid={`form-${nameItem}`}>
               <div style={{ marginBottom: '32px' }}>
                 <Input
@@ -184,7 +184,7 @@ export const ProfileItem = ({ title, nameItem, data, setUpdate }: IProps) => {
       {isModalOpenDelete && (
         <>
           <Modal>
-            {showPopup ? <Popup background={'red'}>Ocorreu um erro interno!</Popup> : null}
+            {showPopup ? <Popup background={'var(--color-error)'}>Ocorreu um erro interno!</Popup> : null}
             <p data-testid="information-message" className='text-delete'>
               Dados com esse nome serão deletados. <br></br> Tem certeza que quer deletar o(a) <b>{itemSelected?.name}</b>?
             </p>

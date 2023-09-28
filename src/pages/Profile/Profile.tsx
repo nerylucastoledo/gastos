@@ -57,7 +57,7 @@ export const Profile = () => {
         )}
         {!error && !loading && data && (
           <>
-            {showPopup ? <Popup background={'red'}>Ocorreu um erro interno, tente novamente mais tarde!</Popup> : null}
+            {showPopup ? <Popup background={'var(--color-error)'}>Ocorreu um erro interno, tente novamente mais tarde!</Popup> : null}
             
             <h2 className={styles['title-profile']}>Olá, {data.name}</h2>
             <div style={{ marginBottom: '32px', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'space-between' }}>

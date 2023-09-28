@@ -42,7 +42,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
         return
       }
 
-      notification({ message: 'Ocorreu um erro interno!', background: 'red' })
+      notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' })
     }).catch(() => notification({ message: 'Ocorreu um erro interno!', background: 'var(--color-error)' }))
   }
 
@@ -72,7 +72,7 @@ export const NewCard = ({ setIsModalOpen }: { setIsModalOpen: React.Dispatch<Rea
           data-testid='input-name'
           value={name}
           onChange={({ currentTarget }) => setName(currentTarget.value)}
-          style={{ width: '100%', marginTop: '6px', border: errorName ? '1px solid red' : 'unset' }}
+          style={{ width: '100%', marginTop: '6px', border: errorName ? '1px solid var(--color-error)' : 'unset' }}
           styleLabel={{ color: 'var(--color-5)', fontWeight: 'bold' }}
         />
         {errorName && <p className="error-input">Nome não pode ser vazio</p>}

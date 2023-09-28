@@ -10,6 +10,7 @@ import { NewBill } from "./pages/NewBIll/NewBill";
 import { Invoice } from "./pages/Invoice/Invoice";
 import { useTheme } from "./Context/ThemeContext";
 import { Report } from "./pages/Report/Report";
+import { NewPassword } from "./pages/NewPassword/NewPassword";
 
 function App() {
   const { theme} = useTheme()
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />}/>
             <Route path="/create-account" element={<CreateAccount />}/>
             <Route path="/reset-password" element={<ResetPassword />}/>
+            <Route path="/reset-password/:username" element={<NewPassword />}/>
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Profile />

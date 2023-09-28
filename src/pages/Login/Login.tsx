@@ -26,11 +26,6 @@ export const Login = () => {
       const config = {
         method: 'POST',
         body: JSON.stringify({ email, password }),
-        headers: {
-          "access-control-allow-origin": "*",
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          'Access-Control-Allow-Methods': '*',
-        },
       }
 
       const response = sendData(`${process.env.VITE_DEFAULT_URL}user/login`, { ...config })
