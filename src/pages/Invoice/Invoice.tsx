@@ -148,7 +148,7 @@ export const Invoice = () => {
         {error && <ErrorScreen color="var(--color-1)" />}
         <div className={styles['btn-back']}>
           <Arrowback fill="var(--color-5)"/>
-          <p onClick={() => navigate('/')}>Voltar</p>
+          <p style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>Voltar</p>
         </div>
           <div 
             style={{ backgroundColor: cardColor }} 

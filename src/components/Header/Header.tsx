@@ -51,39 +51,41 @@ export const Header = () => {
   }
 
   return (
-    <div className={`${styles['container']} ${isModalOpen && styles.active}`} onClick={closeModal}>
-      <button
-        aria-label='Menu'
-        data-testid='btnMenu'
-        className={`${styles['mobile-button']} ${mobileMenu && styles['mobile-button-active']}`}
-        onClick={() => setMobileMenu(!mobileMenu)}>
-      </button>
+    <div className={`${styles['container']}`}>
+      <div className={`${styles['content']} ${isModalOpen && styles.active}`} onClick={closeModal}>
+        <button
+          aria-label='Menu'
+          data-testid='btnMenu'
+          className={`${styles['mobile-button']} ${mobileMenu && styles['mobile-button-active']}`}
+          onClick={() => setMobileMenu(!mobileMenu)}>
+        </button>
 
-      <nav id='menu' className={`${styles['nav-mobile']} ${mobileMenu && styles['nav-mobile-active']}`}>
-        <button onClick={() => openModal('card')}>Inserir cartão</button>
-        <button onClick={() => openModal('category')}>Inserir categoria</button>
-        <button onClick={() => openModal('people')}>Inserir pessoa</button>
-        <button onClick={() => navigate('/new-bill')}>Inserir gasto</button>
-        <button onClick={() => navigate('/report')}>Relatório</button>
-        <a href='/profile'>Meu perfil</a>
-      </nav>
+        <nav id='menu' className={`${styles['nav-mobile']} ${mobileMenu && styles['nav-mobile-active']}`}>
+          <button onClick={() => openModal('card')}>Inserir cartão</button>
+          <button onClick={() => openModal('category')}>Inserir categoria</button>
+          <button onClick={() => openModal('people')}>Inserir pessoa</button>
+          <button onClick={() => navigate('/new-bill')}>Inserir gasto</button>
+          <button onClick={() => navigate('/report')}>Relatório</button>
+          <a href='/profile'>Meu perfil</a>
+        </nav>
 
-      <img width={130} height={88} onClick={() => navigate('/')} src={Logo} alt="Logo da empresa" />
+        <img width={130} height={88} onClick={() => navigate('/')} src={Logo} alt="Logo da empresa" />
 
-      <div className={styles['box-logout-theme']}>
-        <label className="switch">
-          <input type="checkbox" name='checkbox' checked={theme === 'dark'} onChange={switchTheme}/>
-          <span className="slider round"></span>
-        </label>
+        <div className={styles['box-logout-theme']}>
+          <label className="switch">
+            <input type="checkbox" name='checkbox' checked={theme === 'dark'} onChange={switchTheme}/>
+            <span className="slider round"></span>
+          </label>
+        </div>
+
+        <img width={32} height={32} src={Logout} onClick={handleLogout} alt="Sair" />
+
+        {isModalOpen && (
+          <Modal>
+            {itemSelected()}
+          </Modal>
+        )}
       </div>
-
-      <img width={32} height={32} src={Logout} onClick={handleLogout} alt="Sair" />
-
-      {isModalOpen && (
-        <Modal>
-          {itemSelected()}
-        </Modal>
-      )}
     </div>
   )
 }

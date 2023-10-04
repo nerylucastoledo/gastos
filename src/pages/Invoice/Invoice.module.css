@@ -2,6 +2,8 @@
   background-color: var(--color-1);
   height: calc(100vh - 136px);
   padding-top: 16px;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 .invoice.active:before {
@@ -70,4 +72,11 @@
 
 .animate-up {
   animation: animateUp 0.5s ease-in-out;
+}
+
+@media (min-width: 960px) {
+  .invoice-card {
+    height: calc(100vh - 200px) !important;
+    border-radius: 16px;
+  }
 }

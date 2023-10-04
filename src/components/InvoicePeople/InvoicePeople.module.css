@@ -16,6 +16,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .people-content-item:last-child {

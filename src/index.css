@@ -145,10 +145,11 @@ input:checked + .slider:before {
 
 .form-inputs {
   background-color: var(--color-2);
-  margin: 32px 48px 0;
+  margin: 32px auto 0;
   border-radius: 32px;
   padding: 32px 16px;
   z-index: 2;
+  max-width: 450px;
 }
 
 .form-inputs h1 {
@@ -176,4 +177,10 @@ input:checked + .slider:before {
 .logo-center {
   display: block;
   margin: 0 auto 32px;
+}
+
+@media (max-width: 720px) {
+  .form-inputs {
+    margin: 32px 48px 0;
+  }
 }

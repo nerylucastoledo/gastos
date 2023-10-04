@@ -4,6 +4,8 @@
   display: flex;
   flex-flow: column;
   height: max-content;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
 .home-loading {
