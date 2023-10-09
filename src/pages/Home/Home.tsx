@@ -17,6 +17,8 @@ export const Home = () => {
     return item.people === 'Eu' ? Number(acc) + Number(item.value) : acc
   }, 0)
 
+  console.log(data)
+
   useEffect(() => {
     setUpdate(true)
   }, [])

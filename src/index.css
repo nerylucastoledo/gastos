@@ -149,7 +149,7 @@ input:checked + .slider:before {
   border-radius: 32px;
   padding: 32px 16px;
   z-index: 2;
-  max-width: 450px;
+  max-width: 650px;
 }
 
 .form-inputs h1 {
